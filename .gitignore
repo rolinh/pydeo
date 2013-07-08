@@ -1,0 +1,16 @@
+# general patterns
+*.swp
+*.pyc
+*.directory
+
+# files
+config/settings.py
+
+# folders
+_build
+__pycache__
+bin
+build
+include
+lib
+local
