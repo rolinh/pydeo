@@ -8,7 +8,6 @@ from bottle import TEMPLATE_PATH
 from bottle import debug
 from bottle import run
 
-from app.controllers import *
 from config import environment
 from config import routes
 from config import settings
