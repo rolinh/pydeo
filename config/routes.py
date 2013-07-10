@@ -22,10 +22,8 @@ def setup_routing(app):
     app.route('/', 'GET', IndexController().index)
 
     # audio
-    app.route('/audio', 'GET', AudioController().index)
     app.route('/music', 'GET', AudioController().music)
 
     # video
-    app.route('/video', 'GET', VideoController().index)
     app.route('/movies', 'GET', VideoController().movies)
     app.route('/series', 'GET', VideoController().series)
