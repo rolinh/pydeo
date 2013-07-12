@@ -1,17 +1,18 @@
+FUNC_TEST_DIR='test/functional'
 #docs:
 #	sphinx-build -b html -d build/docs/doctrees docs build/docs/html
-#
-#test:
-#	python test/testall.py
-#
-#test_all: test_27 test_33
-#
-#test_27:
-#	python2.7 test/testall.py
-#
-#test_33:
-#	python3.3 test/testall.py
-#
+
+test:
+	nosetests -w ${FUNC_TEST_DIR}
+
+test_all: test_27 test_33
+
+test_27:
+	nosetests-2.7 -w ${FUNC_TEST_DIR}
+
+test_33:
+	nosetests-3.3 -w ${FUNC_TEST_DIR}
+
 clean:
 	find . -name '__pycache__' -exec rm -rf {} +
 	find . -name '*.pyc' -exec rm -f {} +
@@ -19,5 +20,4 @@ clean:
 	find . -name '*~' -exec rm -f {} +
 	find . -name '._*' -exec rm -f {} +
 
-#.PHONY: docs test test_all test_27 test_33 clean
-.PHONY: clean
+.PHONY: test test_all test_27 test_33 clean
