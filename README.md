@@ -21,7 +21,7 @@ release a version with very few features and improve it over time.
 
 ## TESTING THE APPLICATION
 
-First thing you need is `python` (version 3).
+First thing you need is `python` (version 3.3, 2.7 is planned).
 
 Once you have `python`, you need to install `bottle`. There are several way to
 achieve this. Here is the one I use and recommend:
@@ -31,6 +31,38 @@ achieve this. Here is the one I use and recommend:
 * activate it: `source bin/activate`
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
+
+Once everything is installed, you can then run `pydeo.py`:
+
+    python pydeo.py
+
+Open your browser and navigate to `http://localhost:8080`.
+
+## ADDING FILES
+
+You need to add you media files in the `files` folder of **pydeo**. It expects
+the following structure:
+<pre>
+files
+|___audio
+|   |__music
+|       |__example_artist
+|           |__example_album
+|               |__example_track.flac
+|__video
+    |__movies
+    |   |__ example_movie.mkv
+    |__series
+        |__example_serie
+            |__season01
+            |   |__episode01.mkv
+            |__season02
+                |__ episode02.mkv
+</pre>
+
+So add your movies in a `movies` folder and so on. If you do not want to copy
+all your media files in these directories, I suggest you use symbolic links
+(this is actually the way I would recommend).
 
 ## CONTRIBUTING
 
