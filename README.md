@@ -1,4 +1,6 @@
-# README
+# PYDEO
+
+[![Build Status](https://travis-ci.org/Rolinh/pydeo.png?branch=master)](https://travis-ci.org/Rolinh/pydeo)
 
 ## SYNOPSIS
 
