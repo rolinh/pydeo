@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/Rolinh/pydeo.png?branch=master)](https://travis-ci.org/Rolinh/pydeo)
 
-## SYNOPSIS
-
 **pydeo** is an application for managing media files such as movies, series and
 music through a web browser.
 
@@ -33,6 +31,7 @@ achieve this. Here is the one I use and recommend:
 * activate it: `source bin/activate`
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
+* update submodules: `git submodule foreach git pull`
 
 Copy `config/settings.py.sample` to `config/settings.py` and adjust the settings
 if necessary.
