@@ -1,10 +1,11 @@
 from bottle import route
 
-from app.controllers.audio import AudioController
 from app.controllers.assets import AssetsController
 from app.controllers.errors import ErrorsController
 from app.controllers.index import IndexController
-from app.controllers.video import VideoController
+from app.controllers.movies import MoviesController
+from app.controllers.music import MusicController
+from app.controllers.series import SeriesController
 
 def setup_routing(app):
     # static files
@@ -22,8 +23,8 @@ def setup_routing(app):
     app.route('/', 'GET', IndexController().index)
 
     # audio
-    app.route('/music', 'GET', AudioController().music)
+    app.route('/music', 'GET', MusicController().music)
 
     # video
-    app.route('/movies', 'GET', VideoController().movies)
-    app.route('/series', 'GET', VideoController().series)
+    app.route('/movies', 'GET', MoviesController().movies)
+    app.route('/series', 'GET', SeriesController().series)

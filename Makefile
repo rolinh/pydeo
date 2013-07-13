@@ -3,8 +3,11 @@ UNIT_TEST_DIR='test/unit'
 #docs:
 #	sphinx-build -b html -d build/docs/doctrees docs build/docs/html
 
+update_submodules:
+	git submodule foreach git pull
+
 set_settings:
-	cp -rf config/settings.py.sample config/settings.py
+	cp -f config/settings.py.sample config/settings.py
 
 test: set_settings
 	nosetests -w ${FUNC_TEST_DIR}
