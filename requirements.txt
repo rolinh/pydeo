@@ -1,2 +1,4 @@
 bottle>=0.11
 requests>=0.10
+SQLAlchemy>=0.8.2
+bottle-sqlalchemy>=0.4
