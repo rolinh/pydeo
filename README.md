@@ -72,3 +72,12 @@ Feel free to contact me if you have any question or suggestion.
 If you already have developed with the Ruby on Rails framework, you should then
 be familiar with how I organised the sources. If not but you are familiar with
 the MVC pattern, you should be fine too.
+
+If you want to submit patches, you need to make sure your changes pass the
+tests. Think about updating the tests if necessary. But before that, install the
+requirements to run the tests:
+
+    pip install -r requirements_dev.txt
+
+Once done, make sure all tests pass by running `make test_all`.
+
