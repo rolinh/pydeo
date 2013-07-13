@@ -8,6 +8,8 @@ class MoviesControllerTests(unittest.TestCase):
     def test_update_movies_db(self):
         dir = 'data/movies/'
         l = movies.MoviesController().update_movies_db(dir)
+        assert l[0].title == 'Sintel'
+        assert l[1].title == 'big_buck_bunny_1080p_h264'
         assert l[0].view_count == 0
         assert l[1].view_count == 0
         assert l[0].file_name == 'Sintel.mkv'

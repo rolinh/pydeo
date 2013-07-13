@@ -39,6 +39,7 @@ class MoviesController(ApplicationController):
                 movie.__class__ = Movie
             else:
                 movie = Movie()
+                movie.title = filename
             movie.file_name = f
             movie.file_extension = ext[1:]
             movie.file_modification_date = datetime.fromtimestamp(f_info.st_mtime)
