@@ -16,3 +16,5 @@ class MoviesControllerTests(unittest.TestCase):
         assert l[1].file_extension == 'mov'
         assert l[0].file_size == 4300800
         assert l[1].file_size == 1379328
+
+    test_update_movies_db.slow = 1
