@@ -1,5 +1,17 @@
+# environment (production, development, test)
+environment = 'development'
+
 # define host
 host = '0.0.0.0'
 
 # define port
 port = 8080
+
+# directories where to find media files (under "files" directory):
+# directory containing movies
+movies_dir = 'video/movies'
+# directory containing series
+series_dir = 'video/series'
+# directory containing music
+music_dir = 'audio/music'
+
