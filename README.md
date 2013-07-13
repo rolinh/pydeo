@@ -32,7 +32,10 @@ achieve this. Here is the one I use and recommend:
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
 
-Once everything is installed, you can then run `pydeo.py`:
+Copy `config/settings.py.sample` to `config/settings.py` and adjust the settings
+if necessary.
+
+Once done, you're ready and can simply run `pydeo.py`:
 
     python pydeo.py
 
