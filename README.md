@@ -83,5 +83,5 @@ requirements to run the tests:
 
     pip install -r requirements_dev.txt
 
-Once done, make sure all tests pass by running `make test_all`.
+Once done, make sure all tests pass by running `make test`.
 
