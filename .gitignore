@@ -11,6 +11,8 @@ _build
 __pycache__
 bin
 build
+files/audio
+files/video
 include
 lib
 local

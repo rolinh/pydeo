@@ -3,8 +3,10 @@
 
 __version__ = '0.1.0'
 
+import sys
 import bottle
 
+from app.helpers import files_dir
 from config import environment
 from config import routes
 from config import settings
@@ -21,6 +23,9 @@ class Pydeo:
         self.port = port
         self.reloader = reloader
         self.debug = debug
+        self.dir_list = ['files/' + s for s in [settings.music_dir,
+                                                settings.movies_dir,
+                                                settings.series_dir]]
 
         self.app = bottle.Bottle()
 
@@ -39,4 +44,9 @@ if __name__ == "__main__":
               port=settings.port,
               reloader=environment.reloader,
               debug=environment.debug)
+    chk_dir = files_dir.check_dir_presence(a.dir_list)
+    if chk_dir != 'OK':
+        sys.stderr.write(('At least one of the media folders set in settings '
+                          'does not seem to exist: {}\n').format(chk_dir))
+        sys.exit(1)
     bottle.run(a.app, reloader=a.reloader, host=a.host, port=a.port)
