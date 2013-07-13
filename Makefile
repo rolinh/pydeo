@@ -24,4 +24,7 @@ clean:
 	find . -name '*~' -exec rm -f {} +
 	find . -name '._*' -exec rm -f {} +
 
+clean_env: clean
+	rm -r bin include lib local man
+
 .PHONY: test test_all test_27 test_33 clean
