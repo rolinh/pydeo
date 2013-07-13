@@ -3,6 +3,10 @@ UNIT_TEST_DIR='test/unit'
 #docs:
 #	sphinx-build -b html -d build/docs/doctrees docs build/docs/html
 
+init_submodules:
+	git submodule init
+	git submodule update
+
 update_submodules:
 	git submodule foreach git pull
 
