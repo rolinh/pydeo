@@ -21,7 +21,7 @@ release a version with very few features and improve it over time.
 
 ## TESTING THE APPLICATION
 
-First thing you need is `python` (version 3.3, 2.7 is planned).
+First thing you need is `python` (version 3.3).
 
 Once you have `python`, you need to install `bottle`. There are several way to
 achieve this. Here is the one I use and recommend:
