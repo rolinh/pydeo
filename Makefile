@@ -37,4 +37,4 @@ clean:
 clean_env: clean
 	rm -r bin include lib local man
 
-.PHONY: test test_all test_27 test_33 clean
+.PHONY: init_submodules update_submodules test test_all test_27 test_33 clean

@@ -31,9 +31,7 @@ achieve this. Here is the one I use and recommend:
 * activate it: `source bin/activate`
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
-* update submodules: `git submodule foreach git pull`
-* install sudmodules requirements:
-  `pip install -r vendor/imdbpie/requirements.txt`
+* init submodules: `make init_submodules`
 
 Copy `config/settings.py.sample` to `config/settings.py` and adjust the settings
 if necessary.
