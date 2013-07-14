@@ -1,1 +1,2 @@
-%rebase layouts/application
+<%inherit file="../layouts/application.tpl"/>
+Index

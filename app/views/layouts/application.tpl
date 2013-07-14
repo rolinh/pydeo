@@ -87,7 +87,7 @@
 
             <div class="container-fluid">
                 <!-- content goes here, inside this container -->
-                %include
+                ${self.body()}
             </div> <!-- container-fluid -->
 
             <!-- to push down the footer -->

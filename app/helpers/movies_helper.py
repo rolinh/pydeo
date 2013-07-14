@@ -19,8 +19,7 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
             continue
         filename, ext = path.splitext(f)
         f_info = stat(dir + f)
-        # TODO implement this function to generate a clean title from
-        # filename
+        # TODO implement this function to generate a clean title from filename
         # title = application_helper.gen_clean_name(filename)
         title = filename
 
