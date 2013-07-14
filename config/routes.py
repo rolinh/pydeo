@@ -1,11 +1,11 @@
 from bottle import route
 
-from app.controllers.assets import AssetsController
-from app.controllers.errors import ErrorsController
-from app.controllers.index import IndexController
-from app.controllers.movies import MoviesController
-from app.controllers.music import MusicController
-from app.controllers.series import SeriesController
+from app.controllers.assets_controller import AssetsController
+from app.controllers.errors_controller import ErrorsController
+from app.controllers.index_controller import IndexController
+from app.controllers.movies_controller import MoviesController
+from app.controllers.music_controller import MusicController
+from app.controllers.series_controller import SeriesController
 
 def setup_routing(app):
     # static files

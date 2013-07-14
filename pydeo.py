@@ -5,8 +5,11 @@ __version__ = '0.1.0'
 
 import sys
 import bottle
+from bottle.ext import sqlalchemy
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
 
-from app.helpers import files_dir
+from app.helpers import files_dir_helper
 from config import environment
 from config import routes
 from config import settings
@@ -27,6 +30,7 @@ class Pydeo:
                                                 settings.movies_dir,
                                                 settings.series_dir]]
 
+
         self.app = bottle.Bottle()
 
         routes.setup_routing(self.app)
@@ -44,9 +48,20 @@ if __name__ == "__main__":
               port=settings.port,
               reloader=environment.reloader,
               debug=environment.debug)
-    chk_dir = files_dir.check_dir_presence(a.dir_list)
+    chk_dir = files_dir_helper.check_dir_presence(a.dir_list)
     if chk_dir != 'OK':
         sys.stderr.write(('At least one of the media folders set in settings '
                           'does not seem to exist: {}\n').format(chk_dir))
         sys.exit(1)
+
+    Base = declarative_base()
+    engine = create_engine('sqlite:///:memory:', echo=True)
+    plugin = sqlalchemy.Plugin(engine,
+                               Base.metadata,
+                               keyword='db',
+                               create=True,
+                               commit=True,
+                               use_kwargs=False)
+    a.app.install(plugin)
+
     bottle.run(a.app, reloader=a.reloader, host=a.host, port=a.port)

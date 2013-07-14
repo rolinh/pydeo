@@ -1,13 +1,13 @@
 import unittest
 
 import test_helper
-from app.controllers import movies
+from app.helpers import movies_helper
 
-class MoviesControllerTests(unittest.TestCase):
+class MoviesHelperTests(unittest.TestCase):
 
     def test_update_movies_db(self):
         dir = 'data/movies/'
-        l = movies.MoviesController().update_movies_db(dir)
+        l = movies_helper.update_movies_db(dir)
         assert l[0].title == 'movie_that_does_not_exist'
         assert l[0].view_count == 0
         assert l[0].user_updated == False
