@@ -3,9 +3,6 @@ UNIT_TEST_DIR='test/unit'
 
 NOSETESTS?='nosetests'
 
-#docs:
-#	sphinx-build -b html -d build/docs/doctrees docs build/docs/html
-
 set_settings:
 	cp -f config/settings.py.sample config/settings.py
 
