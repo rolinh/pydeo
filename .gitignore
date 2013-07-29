@@ -14,6 +14,6 @@ build
 files/audio
 files/video
 include
-lib
+lib/python3.3
 local
 man
