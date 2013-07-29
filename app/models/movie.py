@@ -7,7 +7,9 @@ from sqlalchemy import String
 
 from datetime import datetime
 
-class Movie():
+from lib.models import base_initializer as b
+
+class Movie(b.BaseInitializer.get_base()):
     """Model of a movie."""
 
     __tablename__ = 'movies'
@@ -64,5 +66,4 @@ class Movie():
         self.file_extension = None
         self.file_modification_date = datetime(1970, 1, 1)
         self.file_size = 0
-
 
