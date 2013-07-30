@@ -6,6 +6,7 @@
 # files
 alembic.ini
 config/settings.py
+db/pydeo.db
 
 # folders
 _build
