@@ -57,25 +57,25 @@
                                     <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="/" class="brand">Pydeo</a>
                                     <div class="nav-collapse collapse navbar-responsive-collapse">
                                         <ul class="nav">
+                                            <li>
+                                                <a href="/music">Music</a>
+                                            </li>
+                                            <li>
+                                                <a href="/movies">Movies</a>
+                                            </li>
+                                            <li>
+                                                <a href="/series">Series</a>
+                                            </li>
+                                            <!-- TODO: uncomment once plugins are supported
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Audio <b class="caret"></b></a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugin <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a href="/music">Music</a>
+                                                        <a href="/kolekto">Kolekto</a>
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Video <b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a href="/movies">Movies</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/series">Series</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                            -->
                                         </ul>
                                     </div> <!-- nav-collapse collapse navbar-responsive-collapse -->
                                 </div> <!-- container-fluid -->
