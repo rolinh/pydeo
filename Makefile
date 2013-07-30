@@ -22,7 +22,7 @@ clean:
 	find . -name '._*' -exec rm -f {} +
 
 clean_env: clean
-	rm -r bin include lib/python?.? local man
+	rm -r bin include lib/python?\.? local man
 
 init_submodules:
 	git submodule init

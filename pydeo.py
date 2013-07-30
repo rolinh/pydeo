@@ -5,9 +5,6 @@ __version__ = '0.1.0'
 
 import sys
 import bottle
-from bottle.ext import sqlalchemy
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 
 from app.helpers import files_dir_helper
 from config import environment
@@ -53,15 +50,5 @@ if __name__ == "__main__":
         sys.stderr.write(('At least one of the media folders set in settings '
                           'does not seem to exist: {}\n').format(chk_dir))
         sys.exit(1)
-
-    Base = declarative_base()
-    engine = create_engine('sqlite:///:memory:', echo=True)
-    plugin = sqlalchemy.Plugin(engine,
-                               Base.metadata,
-                               keyword='db',
-                               create=True,
-                               commit=True,
-                               use_kwargs=False)
-    a.app.install(plugin)
 
     bottle.run(a.app, reloader=a.reloader, host=a.host, port=a.port)

@@ -2,4 +2,3 @@ bottle>=0.11
 Mako>=0.8.1
 requests>=0.10
 SQLAlchemy>=0.8.2
-bottle-sqlalchemy>=0.4
