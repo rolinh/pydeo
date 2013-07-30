@@ -4,6 +4,7 @@
 *.directory
 
 # files
+alembic.ini
 config/settings.py
 
 # folders
