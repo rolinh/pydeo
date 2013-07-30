@@ -6,4 +6,4 @@ class MusicController(ApplicationController):
 
     def music(self):
         """Render /music page."""
-        return template('audio/music.tpl')
+        return template('music/index.tpl')

@@ -6,5 +6,5 @@ class MoviesController(ApplicationController):
 
     def movies(self):
         """Render /movies page."""
-        return template('video/movies.tpl')
+        return template('movies/index.tpl')
 

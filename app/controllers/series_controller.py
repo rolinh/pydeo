@@ -6,4 +6,4 @@ class SeriesController(ApplicationController):
 
     def series(self):
         """Render /series page."""
-        return template('video/series.tpl')
+        return template('series/index.tpl')
