@@ -10,6 +10,8 @@ from app.helpers import files_dir_helper
 from config import environment
 from config import routes
 from config import settings
+from lib.controllers import db_connector as db
+from lib.models import  base_initializer as b
 
 class Pydeo:
 
@@ -39,6 +41,10 @@ class Pydeo:
             bottle.TEMPLATE_PATH.remove('./views')
 
         bottle.debug(self.debug)
+
+        db.DbConnector.init()
+        b.BaseInitializer.get_base()
+        b.BaseInitializer.Base.metadata.create_all(db.DbConnector.engine)
 
 if __name__ == "__main__":
     a = Pydeo(host=settings.host,

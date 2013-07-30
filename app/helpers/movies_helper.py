@@ -5,6 +5,7 @@ from os import stat
 
 from app.models.movie import Movie
 from config.settings import movies_dir
+from lib.controllers import db_connector as db
 from vendor.imdbpie.imdbpie import imdbpie
 
 def update_movies_db(dir='files/' + movies_dir + '/'):
@@ -12,8 +13,10 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
     Find all movie files in the movie folder and create a list of video
     objects.
     """
+
+    sess = db.DbConnector.session
+
     imdb = imdbpie.Imdb()
-    movies = []
     for f in listdir(dir):
         if not path.isfile(dir + f):
             continue
@@ -53,6 +56,6 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
         movie.file_modification_date = datetime.fromtimestamp(f_info.st_mtime)
         movie.file_size = f_info.st_size
 
-        movies.append(movie)
+        sess.add(movie)
+    sess.commit()
 
-    return movies
