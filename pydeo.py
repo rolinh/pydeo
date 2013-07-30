@@ -18,6 +18,8 @@ class Pydeo:
     def __init__(self,
                  host='0.0.0.0',
                  port=8080,
+                 db_url='sqlite:///:memory:',
+                 db_echo=False,
                  reloader=False,
                  debug=False,
                  template_path='./app/views/'):
@@ -42,13 +44,19 @@ class Pydeo:
 
         bottle.debug(self.debug)
 
-        db.DbConnector.init()
+        db.DbConnector.init(db_url=db_url, echo=db_echo)
         b.BaseInitializer.get_base()
         b.BaseInitializer.Base.metadata.create_all(db.DbConnector.engine)
 
 if __name__ == "__main__":
+    db_url = settings.db_url
+    if not db_url:
+        db_url = environment.db_url
+
     a = Pydeo(host=settings.host,
               port=settings.port,
+              db_url=db_url,
+              db_echo=environment.db_echo,
               reloader=environment.reloader,
               debug=environment.debug)
     chk_dir = files_dir_helper.check_dir_presence(a.dir_list)

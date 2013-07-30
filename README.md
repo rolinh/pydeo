@@ -19,7 +19,7 @@ a simple developer).
 There is no release yet as I just started the project. My goal is to rapidly
 release a version with very few features and improve it over time.
 
-## TESTING THE APPLICATION
+## INSTALLATION
 
 First thing you need is `python` (version 3.3).
 
@@ -33,14 +33,47 @@ achieve this. Here is the one I use and recommend:
   `pip install -r requirements.txt`
 * init submodules: `make init_submodules`
 
-Copy `config/settings.py.sample` to `config/settings.py` and adjust the settings
-if necessary.
+Once done, follow the instructions from the settings section.
 
-Once done, you're ready and can simply run `pydeo.py`:
+## SETTINGS
+
+### BASIC CONFIGURATION
+
+Copy `config/settings.py.sample` to `config/settings.py`.
+Copy `alembic.ini.sample` to `alembic.ini`.
+
+You should be OK for a simple configuration.
+You can simply run `pydeo.py`:
 
     python pydeo.py
 
 Open your browser and navigate to `http://localhost:8080`.
+
+### ADVANCED CONFIGURATION
+
+Copy `config/settings.py.sample` to `config/settings.py` and adjust the settings
+as you like.
+
+Copy `alembic.ini.sample` to `alembic.ini` and adjust `sqlalchemy.url` if you do
+not intend to use sqlite. If you modify this line, set the same database url in
+`config/settings.py`.
+
+Supported databases are the one supported by `SQLAlchemy`:
+
+* Drizzle
+* Firebird
+* Informix
+* Microsoft SQL Server
+* MySQL
+* Oracle
+* PostgreSQL
+* SQLite
+* Sybase
+
+For instance, for MySQL: `mysql://pydeo:pydeo_passwd@localhost/pydeo`.
+
+In any case, remember that unless your movie database contains hundreds of
+thousands of files, you should be good with SQLite.
 
 ## ADDING FILES
 

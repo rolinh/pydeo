@@ -1,11 +1,15 @@
 # environment (production, development, test)
-environment = 'development'
+environment = 'test'
 
 # define host
 host = '0.0.0.0'
-
 # define port
 port = 8080
+
+# database url
+# it should be the same url as the one defined in alembic.ini file
+# if set to None, a default sqlite database will be created
+db_url = None
 
 # directories where to find media files (under "files" directory):
 # directory containing movies
