@@ -41,29 +41,129 @@ class Movie(b.BaseInitializer.get_base()):
     file_size = Column(BigInteger)
 
     def __init__(self):
-        self.imdb_id = None
-        self.title = None
-        self.type = None
-        self.year = None
-        self.tagline = None
-        self.plot_outline = None
-        self.runtime = None
-        self.poster_url = None
-        self.cover_url = None
-        self.release_date = None
-        self.certification = None
-        self.trailer_img_url = None
-        self.directors = None
-        self.creators = None
-        self.cast_summary = None
-        self.credits = None
-        self.writers = None
-        self.trailers = None
+        self.imdb_id = ''
+        self.title = ''
+        self.type = ''
+        self.year = 0
+        self.tagline = ''
+        self.plot_outline = ''
+        self.runtime = ''
+        self.poster_url = ''
+        self.cover_url = ''
+        self.release_date = ''
+        self.certification = ''
+        self.trailer_img_url = ''
+        self.directors = ''
+        self.creators = ''
+        self.cast_summary = ''
+        self.credits = ''
+        self.writers = ''
+        self.trailers = ''
 
         self.view_count = 0
         self.user_updated = False
-        self.file_name = None
-        self.file_extension = None
+        self.file_name = ''
+        self.file_extension = ''
         self.file_modification_date = datetime(1970, 1, 1)
         self.file_size = 0
+
+    def __repr__(self):
+        return ('<Movie:'
+                'imdb_id=%s,'
+                'title=%s,'
+                'type=%s,'
+                'year=%s,'
+                'tagline=%s,'
+                'plot_outline=%s,'
+                'runtime=%s,'
+                'poster_url=%s,'
+                'cover_url=%s,'
+                'release_date=%s,'
+                'certification=%s,'
+                'trailer_img_url=%s,'
+                'directors=%s,'
+                'creators=%s,'
+                'cast_summary=%s,'
+                'credits=%s,'
+                'writers=%s,'
+                'trailers=%s,'
+                'view_count=%s,'
+                'user_updated=%s,'
+                'file_name=%s,'
+                'file_extension=%s,'
+                'file_modification_date=%s,'
+                'file_size=%s>') % (self.imdb_id,
+                                    self.title,
+                                    self.type,
+                                    self.year,
+                                    self.tagline,
+                                    self.plot_outline,
+                                    self.runtime,
+                                    self.poster_url,
+                                    self.cover_url,
+                                    self.release_date,
+                                    self.certification,
+                                    self.trailer_img_url,
+                                    self.directors,
+                                    self.creators,
+                                    self.cast_summary,
+                                    self.credits,
+                                    self.writers,
+                                    self.trailers,
+                                    self.view_count,
+                                    self.user_updated,
+                                    self.file_name,
+                                    self.file_extension,
+                                    self.file_modification_date,
+                                    self.file_size)
+
+    def __str__(self):
+        return ('Movie attributes:\n'
+                'imdb_id: %s\n'
+                'title: %s\n'
+                'type: %s\n'
+                'year: %s\n'
+                'tagline: %s\n'
+                'plot_outline: %s\n'
+                'runtime: %s\n'
+                'poster_url: %s\n'
+                'cover_url: %s\n'
+                'release_date: %s\n'
+                'certification: %s\n'
+                'trailer_img_url: %s\n'
+                'directors: %s\n'
+                'creators: %s\n'
+                'cast_summary: %s\n'
+                'credits: %s\n'
+                'writers: %s\n'
+                'trailers: %s\n'
+                'view_count: %s\n'
+                'user_updated: %s\n'
+                'file_name: %s\n'
+                'file_extension: %s\n'
+                'file_modification_date: %s\n'
+                'file_size: %s') % (self.imdb_id,
+                                      self.title,
+                                      self.type,
+                                      self.year,
+                                      self.tagline,
+                                      self.plot_outline,
+                                      self.runtime,
+                                      self.poster_url,
+                                      self.cover_url,
+                                      self.release_date,
+                                      self.certification,
+                                      self.trailer_img_url,
+                                      self.directors,
+                                      self.creators,
+                                      self.cast_summary,
+                                      self.credits,
+                                      self.writers,
+                                      self.trailers,
+                                      self.view_count,
+                                      self.user_updated,
+                                      self.file_name,
+                                      self.file_extension,
+                                      self.file_modification_date,
+                                      self.file_size)
 
