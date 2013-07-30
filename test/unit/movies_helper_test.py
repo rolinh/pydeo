@@ -13,7 +13,7 @@ class MoviesHelperTests(unittest.TestCase):
         dir = 'data/movies/'
         movies_helper.update_movies_db(dir)
 
-        # assert sess.query(movie.Movie).count() == 2
+        assert sess.query(movie.Movie).count() == 2
 
         l = sess.query(movie.Movie).order_by(movie.Movie.title).all()
 
