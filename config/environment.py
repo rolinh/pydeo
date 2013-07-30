@@ -13,3 +13,4 @@ else:
 
 debug = env.debug
 reloader = env.reloader
+db_echo = env.db_echo

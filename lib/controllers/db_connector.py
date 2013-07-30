@@ -6,7 +6,7 @@ class DbConnector():
     engine = None
 
     @staticmethod
-    def init(db_url='sqlite:///:memory:'):
-        DbConnector.engine = create_engine(db_url, echo=True)
+    def init(db_url='sqlite:///:memory:', echo=False):
+        DbConnector.engine = create_engine(db_url, echo=echo)
         Session = sessionmaker(bind=DbConnector.engine)
         DbConnector.session = Session()
