@@ -1,3 +1,21 @@
+from sqlalchemy.ext.declarative import DeclarativeMeta
+import json
+
+class AlchemyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj.__class__, DeclarativeMeta):
+            fields = {}
+            attrs = [x for x in dir(obj) if not x.startswith('_') and x != 'metadata']
+            for field in attrs:
+                data = obj.__getattribute__(field)
+                if hasattr(data, 'isoformat'):
+                    data = data.isoformat()
+                json.dumps(data)
+                fields[field] = data
+            return fields
+
+        return json.JSONEncoder.default(self, obj)
+
 def gen_clean_name(filename):
     """
     Take a file name and generate a clean name from it.

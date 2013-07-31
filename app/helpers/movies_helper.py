@@ -15,11 +15,15 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
     """
 
     sess = db.DbConnector.session
+    movies_in_db = [m.file_name for m in sess.query(Movie).all()]
 
     imdb = imdbpie.Imdb()
     for f in listdir(dir):
         if not path.isfile(dir + f):
             continue
+        if f in movies_in_db:
+            continue
+
         filename, ext = path.splitext(f)
         f_info = stat(dir + f)
         # TODO implement this function to generate a clean title from filename

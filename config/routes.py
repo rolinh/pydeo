@@ -7,6 +7,8 @@ from app.controllers.movies_controller import MoviesController
 from app.controllers.music_controller import MusicController
 from app.controllers.series_controller import SeriesController
 
+from app.controllers.api.movies_api import MoviesAPIController
+
 def setup_routing(app):
     # static files
     app.route('/img/<filename>', 'GET', AssetsController.images)
@@ -22,9 +24,17 @@ def setup_routing(app):
     # home
     app.route('/', 'GET', IndexController().index)
 
-    # audio
-    app.route('/music', 'GET', MusicController().music)
+    # music
+    app.route('/music', 'GET', MusicController().index)
 
-    # video
-    app.route('/movies', 'GET', MoviesController().movies)
-    app.route('/series', 'GET', SeriesController().series)
+    # movies
+    app.route('/movies', 'GET', MoviesController().index)
+
+    # series
+    app.route('/series', 'GET', SeriesController().index)
+
+    # REST API routes
+    # movies
+    app.route('/api/movies', 'GET', MoviesAPIController().movies)
+    app.route('/api/movies/reload', 'GET', MoviesAPIController().movies_reload)
+    app.route('/api/movies/title', 'GET', MoviesAPIController().movies_title)

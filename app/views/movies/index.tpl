@@ -16,11 +16,9 @@
             </tr>
         </thead>
         <tbody>
-        % for m in movies_title:
             <tr>
-                <td class="td-wrap">${m}</td>
+                <td class="td-wrap">movie</td>
             </tr>
-        % endfor
         </tbody>
     </table>
 

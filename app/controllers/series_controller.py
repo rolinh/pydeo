@@ -4,6 +4,6 @@ from app.controllers.application_controller import ApplicationController
 
 class SeriesController(ApplicationController):
 
-    def series(self):
+    def index(self):
         """Render /series page."""
         return template('series/index.tpl')

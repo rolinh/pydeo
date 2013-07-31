@@ -167,3 +167,4 @@ class Movie(b.BaseInitializer.get_base()):
                                     self.file_modification_date,
                                     self.file_size)
 
+

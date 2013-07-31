@@ -5,7 +5,7 @@ debug = True
 reloader = True
 
 # database url
-db_url = 'sqlite:///:memory:'
+db_url = 'sqlite:///db/dev.db'
 
 # echo database engine messages
 db_echo = True
