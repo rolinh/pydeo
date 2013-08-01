@@ -38,3 +38,4 @@ def setup_routing(app):
     app.route('/api/movies', 'GET', MoviesAPIController().movies)
     app.route('/api/movies/reload', 'GET', MoviesAPIController().movies_reload)
     app.route('/api/movies/title', 'GET', MoviesAPIController().movies_title)
+    app.route('/api/movies/id/<id>', 'GET', MoviesAPIController().movies_id)
