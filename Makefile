@@ -1,7 +1,14 @@
-FUNC_TEST_DIR='test/functional'
-UNIT_TEST_DIR='test/unit'
+APP_DIR=app
+CONFIG_DIR=config
+LIB_DIR=lib
+CTRL_LIB_DIR=${LIB_DIR}/controllers
+MDLS_LIB_DIR=${LIB_DIR}/models
+TEST_DIR=test
+FUNC_TEST_DIR=${TEST_DIR}/functional
+UNIT_TEST_DIR=${TEST_DIR}/unit
 
-NOSETESTS?='nosetests'
+NOSETESTS?=nosetests
+PEP8?=pep8
 
 set_settings:
 	cp -f config/settings.py.sample config/settings.py
@@ -13,6 +20,9 @@ test_unit: set_settings
 	${NOSETESTS} -w ${UNIT_TEST_DIR}
 
 test: set_settings test_func test_unit
+
+pep8:
+	${PEP8} ${APP_DIR} ${CTRL_LIB_DIR} ${MDLS_LIB_DIR} ${CONFIG_DIR} ${TEST_DIR}
 
 clean:
 	find . -name '__pycache__' -exec rm -rf {} +
@@ -31,4 +41,4 @@ init_submodules:
 update_submodules:
 	git submodule foreach git pull
 
-.PHONY: init_submodules update_submodules test_func test_unit test clean
+.PHONY: init_submodules update_submodules test_func test_unit test pep8 clean
