@@ -5,7 +5,7 @@ class AlchemyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
             fields = {}
-            attrs = [x for x in dir(obj) if not x.startswith('_') and x != 'metadata']
+            attrs = [x for x in obj.__dict__.keys() if x != '_sa_instance_state']
             for field in attrs:
                 data = obj.__getattribute__(field)
                 if hasattr(data, 'isoformat'):
