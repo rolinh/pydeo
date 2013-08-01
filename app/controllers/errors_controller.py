@@ -2,6 +2,7 @@ from bottle import mako_template as template
 
 from app.controllers.application_controller import ApplicationController
 
+
 class ErrorsController(ApplicationController):
 
     def error_404(self):
@@ -11,4 +12,3 @@ class ErrorsController(ApplicationController):
     def error_500(self):
         """Render 500 error page."""
         return template('errors/500.tpl')
-

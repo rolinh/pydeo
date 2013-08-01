@@ -8,6 +8,7 @@ from config.settings import movies_dir
 from lib.controllers import db_connector as db
 from vendor.imdbpie.imdbpie import imdbpie
 
+
 def update_movies_db(dir='files/' + movies_dir + '/'):
     """
     Find all movie files in the movie folder and create a list of video
@@ -51,7 +52,8 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
             movie.cast_summary = ', '.join(p.name for p in m.cast_summary)
             movie.credits = ', '.join(p.name for p in m.credits)
             movie.writers = ', '.join(p.name for p in m.writers)
-            movie.trailers = ', '.join(['%s#%s' % (k,v) for (k,v) in m.trailers.items()])
+            movie.trailers = ', '.join(['%s#%s' % (k, v) for (k, v)
+                                        in m.trailers.items()])
         else:
             movie.title = filename
 
@@ -62,4 +64,3 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
 
         sess.add(movie)
     sess.commit()
-

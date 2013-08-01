@@ -7,6 +7,7 @@ from app.helpers import application_helper as ah
 from app.helpers import movies_helper as mh
 from lib.controllers import db_connector as db
 
+
 class MoviesAPIController():
 
     def movies(self):

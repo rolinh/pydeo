@@ -9,6 +9,7 @@ from datetime import datetime
 
 from lib.models import base_initializer as b
 
+
 class Movie(b.BaseInitializer.get_base()):
     """Model of a movie."""
 
@@ -166,5 +167,3 @@ class Movie(b.BaseInitializer.get_base()):
                                     self.file_extension,
                                     self.file_modification_date,
                                     self.file_size)
-
-

@@ -18,4 +18,3 @@ movies_dir = 'video/movies'
 series_dir = 'video/series'
 # directory containing music
 music_dir = 'audio/music'
-

@@ -1,7 +1,8 @@
 # general patterns
-*.swp
-*.pyc
+*.cache
 *.directory
+*.pyc
+*.swp
 
 # files
 alembic.ini

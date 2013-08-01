@@ -2,6 +2,7 @@ from bottle import static_file
 
 from app.controllers.application_controller import ApplicationController
 
+
 class AssetsController(ApplicationController):
 
     def favicon():

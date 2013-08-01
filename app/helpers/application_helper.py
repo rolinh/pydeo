@@ -1,11 +1,12 @@
 from sqlalchemy.ext.declarative import DeclarativeMeta
 import json
 
+
 class AlchemyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
             fields = {}
-            attrs = [x for x in obj.__dict__.keys() if x != '_sa_instance_state']
+            attrs = [x for x in obj.__dict__.keys() if not x.startswith('_')]
             for field in attrs:
                 data = obj.__getattribute__(field)
                 if hasattr(data, 'isoformat'):
@@ -15,6 +16,7 @@ class AlchemyEncoder(json.JSONEncoder):
             return fields
 
         return json.JSONEncoder.default(self, obj)
+
 
 def gen_clean_name(filename):
     """
@@ -26,6 +28,7 @@ def gen_clean_name(filename):
     """
     # TODO
     pass
+
 
 def bytes2human(n, format="%(value)i%(symbol)s"):
     """

@@ -11,7 +11,8 @@ from config import environment
 from config import routes
 from config import settings
 from lib.controllers import db_connector as db
-from lib.models import  base_initializer as b
+from lib.models import base_initializer as b
+
 
 class Pydeo:
 
@@ -30,7 +31,6 @@ class Pydeo:
         self.dir_list = ['files/' + s for s in [settings.music_dir,
                                                 settings.movies_dir,
                                                 settings.series_dir]]
-
 
         self.app = bottle.Bottle()
 

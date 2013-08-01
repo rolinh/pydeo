@@ -9,6 +9,7 @@ from app.controllers.series_controller import SeriesController
 
 from app.controllers.api.movies_api import MoviesAPIController
 
+
 def setup_routing(app):
     # static files
     app.route('/img/<filename>', 'GET', AssetsController.images)
