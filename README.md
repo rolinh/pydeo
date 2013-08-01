@@ -6,7 +6,8 @@
 watch your movies or series episodes in streaming through an HTML5 video player
 (with a flash player fallback if HTML5 video is not possible) or directly on the
 computer on which **pydeo** is installed. Other features will include playing
-music or watch complete movie description with trailers and so on.
+music or access complete movie description with trailer, list of actores and so
+on.
 
 It is written in `python` using the `bottle` framework. Its main goals are to be
 simple, lightweight and easy to the eyes. Therefore, it should run on very low
