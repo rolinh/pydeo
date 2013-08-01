@@ -3,6 +3,7 @@ from webtest import TestApp
 
 import test_helper
 
+
 class MoviesAPIControllerTests(unittest.TestCase):
 
     def test_movies(self):
@@ -22,4 +23,3 @@ class MoviesAPIControllerTests(unittest.TestCase):
     # def test_movies_reload(self):
     #     app = TestApp(test_helper.get_app())
     #     assert app.get('/api/movies/reload').status == '200 OK'
-

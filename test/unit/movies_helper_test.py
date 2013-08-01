@@ -5,6 +5,7 @@ from app.helpers import movies_helper
 from app.models import movie
 from lib.controllers import db_connector as db
 
+
 class MoviesHelperTests(unittest.TestCase):
 
     def test_update_movies_db(self):
@@ -31,7 +32,7 @@ class MoviesHelperTests(unittest.TestCase):
 
         assert l[1].title == 'movie_that_does_not_exist'
         assert l[1].view_count == 0
-        assert l[1].user_updated == False
+        assert l[1].user_updated is False
         assert l[1].file_name == 'movie_that_does_not_exist.mov'
         assert l[1].file_extension == 'mov'
         assert l[1].file_size == 1379328

@@ -3,7 +3,8 @@ import sys
 sys.path = ['../..'] + sys.path
 
 from lib.controllers import db_connector as db
-from lib.models import  base_initializer as b
+from lib.models import base_initializer as b
+
 
 def init():
     db.DbConnector.init()

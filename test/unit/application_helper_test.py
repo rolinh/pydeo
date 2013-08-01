@@ -4,6 +4,7 @@ import test_helper
 
 from app.helpers import application_helper as ah
 
+
 class ApplicationHelperTests(unittest.TestCase):
 
     def test_bytes2human(self):
