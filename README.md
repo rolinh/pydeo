@@ -2,8 +2,11 @@
 
 [![Build Status](https://travis-ci.org/Rolinh/pydeo.png?branch=master)](https://travis-ci.org/Rolinh/pydeo)
 
-**pydeo** is an application for managing media files such as movies, series and
-music through a web browser.
+**pydeo** is a web based media center. When completed, it will allow you to
+watch your movies or series episodes in streaming through an HTML5 video player
+(with a flash player fallback if HTML5 video is not possible) or directly on the
+computer on which **pydeo** is installed. Other features will include playing
+music or watch complete movie description with trailers and so on.
 
 It is written in `python` using the `bottle` framework. Its main goals are to be
 simple, lightweight and easy to the eyes. Therefore, it should run on very low
@@ -31,7 +34,7 @@ achieve this. Here is the one I use and recommend:
 * activate it: `source bin/activate`
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
-* init submodules: `make init_submodules`
+* initialize the submodules: `make init_submodules`
 
 Once done, follow the instructions from the settings section.
 
@@ -55,10 +58,10 @@ Copy `config/settings.py.sample` to `config/settings.py` and adjust the settings
 as you like.
 
 Copy `alembic.ini.sample` to `alembic.ini` and adjust `sqlalchemy.url` if you do
-not intend to use sqlite. If you modify this line, set the same database url in
-`config/settings.py`.
+not intend to use `SQLite`. If you modify this line, set the same database URL
+in `config/settings.py`.
 
-Supported databases are the one supported by `SQLAlchemy`:
+Supported databases are the ones supported by `SQLAlchemy`:
 
 * Drizzle
 * Firebird
@@ -70,10 +73,10 @@ Supported databases are the one supported by `SQLAlchemy`:
 * SQLite
 * Sybase
 
-For instance, for MySQL: `mysql://pydeo:pydeo_passwd@localhost/pydeo`.
+Example URL for for `MySQL`: `mysql://pydeo:pydeo_passwd@localhost/pydeo`.
 
 In any case, remember that unless your movie database contains hundreds of
-thousands of files, you should be good with SQLite.
+thousands of files, you should be good with `SQLite`.
 
 ## ADDING FILES
 
@@ -81,20 +84,18 @@ You need to add you media files in the `files` folder of **pydeo**. It expects
 the following structure:
 <pre>
 files
-|___audio
-|   |__music
-|       |__example_artist
+|__music
+|    |__example_artist
 |           |__example_album
-|               |__example_track.flac
-|__video
-    |__movies
-    |   |__ example_movie.mkv
-    |__series
-        |__example_serie
-            |__season01
-            |   |__episode01.mkv
-            |__season02
-                |__ episode02.mkv
+|                 |__example_track.flac
+|__movies
+|    |__ example_movie.mkv
+|__series
+     |__example_serie
+           |__season01
+           |     |__episode01.mkv
+           |__season02
+                 |__ episode02.mkv
 </pre>
 
 So add your movies in a `movies` folder and so on. If you do not want to copy
@@ -110,6 +111,10 @@ If you already have developed with the Ruby on Rails framework, you should then
 be familiar with how I organised the sources. If not but you are familiar with
 the MVC pattern, you should be fine too.
 
+**pydeo** is based around a JSON REST API, available under `/api` URL. It makes
+it easy to fetch information for `javascript` processing. It also has the
+advantage of processing more stuff on the client side rather on the server side.
+
 If you want to submit patches, you need to make sure your changes pass the
 tests. Think about updating the tests if necessary. But before that, install the
 requirements to run the tests:
@@ -117,4 +122,4 @@ requirements to run the tests:
     pip install -r requirements_dev.txt
 
 Once done, make sure all tests pass by running `make test`.
-
+Make also sure your additions are conform to PEP8 by running `make pep8`.
