@@ -15,8 +15,9 @@ _build
 __pycache__
 bin
 build
-files/audio
-files/video
+files/music
+files/movies
+files/series
 include
 lib/python3.3
 local

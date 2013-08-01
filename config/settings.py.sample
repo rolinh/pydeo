@@ -8,13 +8,13 @@ port = 8080
 
 # database url
 # it should be the same url as the one defined in alembic.ini file
-# if set to None, a default sqlite database will be created
-db_url = None
+# if set to '', a default sqlite database will be created
+db_url = ''
 
 # directories where to find media files (under "files" directory):
 # directory containing movies
-movies_dir = 'video/movies'
+movies_dir = 'movies'
 # directory containing series
-series_dir = 'video/series'
+series_dir = 'series'
 # directory containing music
-music_dir = 'audio/music'
+music_dir = 'music'

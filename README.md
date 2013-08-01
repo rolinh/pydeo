@@ -113,7 +113,8 @@ the MVC pattern, you should be fine too.
 
 **pydeo** is based around a JSON REST API, available under `/api` URL. It makes
 it easy to fetch information for `javascript` processing. It also has the
-advantage of processing more stuff on the client side rather on the server side.
+advantage of processing more stuff on the client side rather than on the server
+side.
 
 If you want to submit patches, you need to make sure your changes pass the
 tests. Think about updating the tests if necessary. But before that, install the
