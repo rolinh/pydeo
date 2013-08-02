@@ -2,6 +2,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 class BaseInitializer():
+    """Class for initializing the database."""
     Base = None
 
     def get_base():

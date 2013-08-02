@@ -11,8 +11,7 @@ from vendor.imdbpie.imdbpie import imdbpie
 
 def update_movies_db(dir='files/' + movies_dir + '/'):
     """
-    Find all movie files in the movie folder and create a list of video
-    objects.
+    Find all movie files in the movie folder and add them to the database.
     """
 
     sess = db.DbConnector.session

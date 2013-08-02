@@ -9,6 +9,7 @@ from lib.controllers import db_connector as db
 
 
 class MoviesAPIController():
+    """Class to handle RESTful API for movies."""
 
     def movies(self):
         """Return all movies."""

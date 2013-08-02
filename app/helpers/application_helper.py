@@ -3,6 +3,10 @@ import json
 
 
 class AlchemyEncoder(json.JSONEncoder):
+    """
+    Extend JSONENcoder class in order to be able to convert objects gotten from
+    SQLAlchemy requests to JSON.
+    """
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
             fields = {}

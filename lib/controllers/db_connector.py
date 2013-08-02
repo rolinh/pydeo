@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 class DbConnector():
+    """Handle connexion to the database."""
     session = None
     engine = None
 

@@ -4,6 +4,7 @@ from app.controllers.application_controller import ApplicationController
 
 
 class ErrorsController(ApplicationController):
+    """Class for handling HTTP errors."""
 
     def error_404(self):
         """Render 404 error page."""

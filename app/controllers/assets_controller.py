@@ -4,6 +4,7 @@ from app.controllers.application_controller import ApplicationController
 
 
 class AssetsController(ApplicationController):
+    """Class for handling static assets."""
 
     def favicon():
         return static_file('favicon.png', root='app/assets/img')
