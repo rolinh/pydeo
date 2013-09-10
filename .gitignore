@@ -19,6 +19,7 @@ files/music
 files/movies
 files/series
 include
+lib/python2.7
 lib/python3.3
 local
 man
