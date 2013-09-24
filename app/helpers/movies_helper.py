@@ -49,7 +49,8 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
                 movie.release_date = m.release_date
                 movie.certification = m.certification
                 movie.trailer_img_url = m.trailer_img_url
-                movie.directors = ', '.join(p.name for p in m.directors_summary)
+                movie.directors = ', '.join(p.name for p
+                                            in m.directors_summary)
                 movie.creators = ', '.join(p.name for p in m.creators)
                 movie.cast_summary = ', '.join(p.name for p in m.cast_summary)
                 movie.credits = ', '.join(p.name for p in m.credits)
