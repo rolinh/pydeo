@@ -19,6 +19,9 @@ class Movie(b.BaseInitializer.get_base()):
     imdb_id = Column(String)
     title = Column(String)
     type = Column(String)
+    genres = Column(String)
+    rating = Column(Integer)
+    votes = Column(Integer)
     year = Column(Integer)
     tagline = Column(String)
     plot_outline = Column(String)
@@ -30,7 +33,7 @@ class Movie(b.BaseInitializer.get_base()):
     trailer_img_url = Column(String)
     directors = Column(String)
     creators = Column(String)
-    cast_summary = Column(String)
+    cast = Column(String)
     credits = Column(String)
     writers = Column(String)
     trailers = Column(String)
@@ -45,6 +48,9 @@ class Movie(b.BaseInitializer.get_base()):
         self.imdb_id = ''
         self.title = ''
         self.type = ''
+        self.genres = ''
+        self.rating = 0
+        self.votes = 0
         self.year = 0
         self.tagline = ''
         self.plot_outline = ''
@@ -56,7 +62,7 @@ class Movie(b.BaseInitializer.get_base()):
         self.trailer_img_url = ''
         self.directors = ''
         self.creators = ''
-        self.cast_summary = ''
+        self.cast = ''
         self.credits = ''
         self.writers = ''
         self.trailers = ''
@@ -73,6 +79,9 @@ class Movie(b.BaseInitializer.get_base()):
                 'imdb_id=%s,'
                 'title=%s,'
                 'type=%s,'
+                'genres=%s,'
+                'rating=%s,'
+                'votes=%s,'
                 'year=%s,'
                 'tagline=%s,'
                 'plot_outline=%s,'
@@ -84,7 +93,7 @@ class Movie(b.BaseInitializer.get_base()):
                 'trailer_img_url=%s,'
                 'directors=%s,'
                 'creators=%s,'
-                'cast_summary=%s,'
+                'cast=%s,'
                 'credits=%s,'
                 'writers=%s,'
                 'trailers=%s,'
@@ -96,6 +105,9 @@ class Movie(b.BaseInitializer.get_base()):
                 'file_size=%s>') % (self.imdb_id,
                                     self.title,
                                     self.type,
+                                    self.genres,
+                                    self.rating,
+                                    self.votes,
                                     self.year,
                                     self.tagline,
                                     self.plot_outline,
@@ -107,7 +119,7 @@ class Movie(b.BaseInitializer.get_base()):
                                     self.trailer_img_url,
                                     self.directors,
                                     self.creators,
-                                    self.cast_summary,
+                                    self.cast,
                                     self.credits,
                                     self.writers,
                                     self.trailers,
@@ -123,6 +135,9 @@ class Movie(b.BaseInitializer.get_base()):
                 'imdb_id: %s\n'
                 'title: %s\n'
                 'type: %s\n'
+                'genres: %s\n'
+                'rating: %s\n'
+                'votes: %s\n'
                 'year: %s\n'
                 'tagline: %s\n'
                 'plot_outline: %s\n'
@@ -134,7 +149,7 @@ class Movie(b.BaseInitializer.get_base()):
                 'trailer_img_url: %s\n'
                 'directors: %s\n'
                 'creators: %s\n'
-                'cast_summary: %s\n'
+                'cast: %s\n'
                 'credits: %s\n'
                 'writers: %s\n'
                 'trailers: %s\n'
@@ -146,6 +161,9 @@ class Movie(b.BaseInitializer.get_base()):
                 'file_size: %s') % (self.imdb_id,
                                     self.title,
                                     self.type,
+                                    self.genres,
+                                    self.rating,
+                                    self.votes,
                                     self.year,
                                     self.tagline,
                                     self.plot_outline,
@@ -157,7 +175,7 @@ class Movie(b.BaseInitializer.get_base()):
                                     self.trailer_img_url,
                                     self.directors,
                                     self.creators,
-                                    self.cast_summary,
+                                    self.cast,
                                     self.credits,
                                     self.writers,
                                     self.trailers,
