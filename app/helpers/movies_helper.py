@@ -1,7 +1,9 @@
 from datetime import datetime
+import logging
 from os import listdir
 from os import path
 from os import stat
+from requests import ConnectionError
 
 from app.models.movie import Movie
 from config.settings import movies_dir
@@ -31,30 +33,35 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
         title = filename
 
         movie = Movie()
-        m = imdb.find_by_title(title)
-        if m:
-            m = imdb.find_movie_by_id(m[0]['imdb_id'])
-            movie.imdb_id = m.imdb_id
-            movie.title = m.title
-            movie.type = m.type
-            movie.year = m.year
-            movie.tagline = m.tagline
-            movie.plot_outline = m.plot_outline
-            movie.runtime = m.runtime
-            movie.poster_url = m.poster_url
-            movie.cover_url = m.cover_url
-            movie.release_date = m.release_date
-            movie.certification = m.certification
-            movie.trailer_img_url = m.trailer_img_url
-            movie.directors = ', '.join(p.name for p in m.directors)
-            movie.creators = ', '.join(p.name for p in m.creators)
-            movie.cast_summary = ', '.join(p.name for p in m.cast_summary)
-            movie.credits = ', '.join(p.name for p in m.credits)
-            movie.writers = ', '.join(p.name for p in m.writers)
-            movie.trailers = ', '.join(['%s#%s' % (k, v) for (k, v)
-                                        in m.trailers.items()])
-        else:
-            movie.title = filename
+        try:
+            m = imdb.find_by_title(title)
+            if m:
+                m = imdb.find_movie_by_id(m[0]['imdb_id'])
+                movie.imdb_id = m.imdb_id
+                movie.title = m.title
+                movie.type = m.type
+                movie.year = m.year
+                movie.tagline = m.tagline
+                movie.plot_outline = m.plot_outline
+                movie.runtime = m.runtime
+                movie.poster_url = m.poster_url
+                movie.cover_url = m.cover_url
+                movie.release_date = m.release_date
+                movie.certification = m.certification
+                movie.trailer_img_url = m.trailer_img_url
+                movie.directors = ', '.join(p.name for p in m.directors)
+                movie.creators = ', '.join(p.name for p in m.creators)
+                movie.cast_summary = ', '.join(p.name for p in m.cast_summary)
+                movie.credits = ', '.join(p.name for p in m.credits)
+                movie.writers = ', '.join(p.name for p in m.writers)
+                movie.trailers = ', '.join(['%s#%s' % (k, v) for (k, v)
+                                            in m.trailers.items()])
+            else:
+                movie.title = filename
+        except ConnectionError:
+            # TODO log to a file
+            logging.warning('Unable to fetch movie information due to network'
+                            ' connection problems: \"%s\"', title)
 
         movie.file_name = f
         movie.file_extension = ext[1:]
