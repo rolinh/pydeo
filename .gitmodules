@@ -1,3 +1,3 @@
 [submodule "vendor/imdbpie"]
 	path = vendor/imdbpie
-	url = https://github.com/Rolinh/imdb-pie.git
+	url = https://github.com/richardasaurus/imdb-pie.git
