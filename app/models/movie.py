@@ -25,7 +25,7 @@ class Movie(b.BaseInitializer.get_base()):
     year = Column(Integer)
     tagline = Column(String)
     plot_outline = Column(String)
-    runtime = Column(String)
+    runtime = Column(Integer)
     poster_url = Column(String)
     cover_url = Column(String)
     release_date = Column(String)
