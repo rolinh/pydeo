@@ -8,7 +8,7 @@ from requests import ConnectionError
 from app.models.movie import Movie
 from config.settings import movies_dir
 from lib.controllers import db_connector as db
-from vendor.imdbpie.imdbpie import imdbpie
+import imdbpie
 
 
 def update_movies_db(dir='files/' + movies_dir + '/'):
