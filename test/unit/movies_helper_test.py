@@ -36,13 +36,24 @@ class MoviesHelperTests(unittest.TestCase):
         assert l[0].view_count == 0
         assert l[0].file_name == 'The Dark Knight.mkv'
         assert l[0].file_extension == 'mkv'
-        assert l[0].file_size == 4300800
+        assert l[0].file_size == 4434
 
         assert l[1].title == 'movie_that_does_not_exist'
         assert l[1].view_count == 0
         assert l[1].user_updated is False
-        assert l[1].file_name == 'movie_that_does_not_exist.mov'
-        assert l[1].file_extension == 'mov'
-        assert l[1].file_size == 1379328
+        assert l[1].file_name == 'movie_that_does_not_exist.avi'
+        assert l[1].file_extension == 'avi'
+        print(l[1].file_size)
+        assert l[1].file_size == 16818
+
+    def test_is_movie(self):
+        test_helper.init()
+        dir = 'data/movies/'
+
+        assert not movies_helper.is_movie('foo')
+        assert not movies_helper.is_movie('/tmp')
+        assert not movies_helper.is_movie(dir + 'foo.txt')
+        assert movies_helper.is_movie(dir + 'The Dark Knight.mkv')
+        assert movies_helper.is_movie(dir + 'movie_that_does_not_exist.avi')
 
     test_update_movies_db.slow = 1

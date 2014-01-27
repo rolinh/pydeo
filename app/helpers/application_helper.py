@@ -22,6 +22,18 @@ class AlchemyEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
+def to_list(l=[]):
+    """
+    Return l if it is a list or an empty list if the parameter is an instance
+    of an other type. This helper is a workaround for a broken API (imdbpie toi
+    name it).
+    """
+    if type(l) is list:
+        return l
+    else:
+        return []
+
+
 def gen_clean_name(filename):
     """
     Take a file name and generate a clean name from it.

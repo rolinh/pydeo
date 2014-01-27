@@ -1,10 +1,13 @@
 from datetime import datetime
 import logging
+import magic
 from os import listdir
 from os import path
 from os import stat
+from magic import from_file
 from requests import ConnectionError
 
+from app.helpers.application_helper import to_list
 from app.models.movie import Movie
 from config.settings import movies_dir
 from lib.controllers import db_connector as db
@@ -21,7 +24,7 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
 
     imdb = imdbpie.Imdb()
     for f in listdir(dir):
-        if not path.isfile(dir + f):
+        if not is_movie(dir + f):
             continue
         if f in movies_in_db:
             continue
@@ -40,7 +43,7 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
                 movie.imdb_id = m.imdb_id
                 movie.title = m.title
                 movie.type = m.type
-                movie.genres = ', '.join(p for p in m.genres)
+                movie.genres = ', '.join(to_list(m.genres))
                 movie.rating = m.rating
                 movie.votes = m.votes
                 movie.year = m.year
@@ -53,17 +56,17 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
                 movie.certification = m.certification
                 movie.trailer_img_url = m.trailer_img_url
                 movie.directors = ', '.join(p.name for p
-                                            in m.directors_summary)
-                movie.creators = ', '.join(p.name for p in m.creators)
-                movie.cast = ', '.join(p.name for p in m.cast_summary)
-                movie.credits = ', '.join(p.name for p in m.credits)
-                movie.writers = ', '.join(p.name for p in m.writers_summary)
+                                            in to_list(m.directors_summary))
+                movie.creators = ', '.join(p.name for p in to_list(m.creators))
+                movie.cast = ', '.join(p.name for p in to_list(m.cast_summary))
+                movie.credits = ', '.join(p.name for p in to_list(m.credits))
+                movie.writers = ', '.join(p.name for p
+                                          in to_list(m.writers_summary))
                 movie.trailers = ', '.join(['%s#%s' % (k, v) for (k, v)
-                                            in m.trailers.items()])
+                                            in to_list(m.trailers.items())])
             else:
                 movie.title = filename
         except ConnectionError:
-            # TODO log to a file
             logging.warning('Unable to fetch movie information due to network'
                             ' connection problems: \"%s\"', title)
 
@@ -74,3 +77,21 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
 
         sess.add(movie)
     sess.commit()
+
+
+def is_movie(file):
+    """
+    Try to determine if the given file is a movie or not.
+    Return true if it is one, false otherwise.
+    """
+    if not path.isfile(file):
+        return False
+    try:
+        filetype = from_file(file, mime=True)
+        if filetype[:5] == b'video':
+            return True
+        else:
+            return False
+    except:
+        logging.warning('Unable to detect file type: \"%s\"', file)
+        return False
