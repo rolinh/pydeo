@@ -13,9 +13,6 @@
 <!--     <link href="css/bootstrap-theme.min.css" rel="stylesheet"> -->
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="navbar-fixed-top.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
