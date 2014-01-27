@@ -79,6 +79,6 @@
 
     <script type="text/javascript" src="js/lib/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/lib/scripts.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
   </body>
 </html>
