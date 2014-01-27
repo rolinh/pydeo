@@ -15,5 +15,8 @@ class AssetsController(ApplicationController):
     def javascripts(filename):
         return static_file(filename, root='app/assets/js')
 
+    def javascripts_libs(filename):
+        return static_file(filename, root='app/assets/js/lib')
+
     def stylesheets(filename):
         return static_file(filename, root='app/assets/css')
