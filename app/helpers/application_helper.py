@@ -34,18 +34,6 @@ def to_list(l=[]):
         return []
 
 
-def gen_clean_name(filename):
-    """
-    Take a file name and generate a clean name from it.
-    For instance:
-    'BatmanBegins_2005_HDRip' => 'Batman Begins'
-    'The Lone Ranger 2013 TS XVID UNiQUE' => 'The Lone Ranger'
-    'Iron.Man.3.2013.R6.HDScr.LINE.NoSUBS.NoBLURS.XVID.AC3.HQ' => 'Iron Man 3'
-    """
-    # TODO
-    pass
-
-
 def bytes2human(n, format="%(value)i%(symbol)s"):
     """
     >>> bytes2human(10000)
