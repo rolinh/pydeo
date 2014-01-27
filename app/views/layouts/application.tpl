@@ -21,6 +21,8 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
   </head>
 
   <body>
@@ -75,7 +77,6 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
