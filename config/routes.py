@@ -31,6 +31,7 @@ def setup_routing(app):
 
     # movies
     app.route('/movies', 'GET', MoviesController().index)
+    app.route('/movies/id/<id>', 'GET', MoviesController().movie)
 
     # series
     app.route('/series', 'GET', SeriesController().index)

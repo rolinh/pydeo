@@ -24,4 +24,5 @@
         </tbody>
     </table>
 </div>
-<script type="text/javascript" src="js/movies.js"></script>
+<script type="text/javascript" src="/js/movies.js"></script>
+<script type="text/javascript">loadMoviesList();</script>

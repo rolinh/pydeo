@@ -10,3 +10,8 @@ class MoviesController(ApplicationController):
         """Render /movies page."""
 
         return template('movies/index.tpl')
+
+    def movie(self, id):
+        """Render /movie/id/<id> page for a detailed view of a movie."""
+
+        return template('movies/movie.tpl', id=id)

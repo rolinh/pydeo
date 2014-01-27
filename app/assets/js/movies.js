@@ -1,6 +1,6 @@
-$(function() {
-   $.ajax({
-       url: 'api/movies',
+function loadMoviesList() { 
+    $.ajax({
+       url: '/api/movies',
        dataType: 'json',
        method: 'get',
        async: 'true',
@@ -17,9 +17,28 @@ $(function() {
            });
        },
        error: function(jqXHR, textStatus, errorThrown) {
-            $('.table-responsive').prepend('<div class="alert alert-danger alert-dismissable">\
+            $('#notification').html('<div class="alert alert-danger alert-dismissable">\
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\
                 <strong>Error! </strong>' + textStatus + '</div>');
        }
    });
-});
+}
+
+function displayMovie(id) {
+    $.ajax({
+        url: '/api/movies/id/' + id,
+        dataType: 'json',
+        method: 'get',
+        async: 'true',
+        success: function(movie) {
+            $.each(movie, function(k,v) {
+                $('[data-key=' + k + ']').text(v);
+            });
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $('#notification').html('<div class="alert alert-danger alert-dismissable">\
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\
+                <strong>Error! </strong>' + textStatus + '</div>');
+       }
+    });
+}
