@@ -1,10 +1,9 @@
 from datetime import datetime
 import logging
-import magic
+from mimetypes import guess_type
 from os import listdir
 from os import path
 from os import stat
-from magic import from_file
 from requests import ConnectionError
 
 from app.helpers.application_helper import to_list
@@ -87,8 +86,9 @@ def is_movie(file):
     if not path.isfile(file):
         return False
     try:
-        filetype = from_file(file, mime=True)
-        if filetype[:5] == b'video':
+        filetype = guess_type(file)[0]
+        print(filetype)
+        if filetype[:5] == 'video':
             return True
         else:
             return False
