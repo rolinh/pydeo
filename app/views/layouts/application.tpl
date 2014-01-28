@@ -72,7 +72,7 @@
     </div> <!-- wrap -->
     <div id="footer">
       <div class="container">
-	<a href="http://projects.gw-computing.net/pydeo/">Pydeo project</a>
+	<a href="http://projects.gw-computing.net/projects/pydeo/">Pydeo project</a>
       </div>
     </div>
 
@@ -81,7 +81,6 @@
     <script type="text/javascript">
       document.createElement('video');document.createElement('audio');
     </script>
-    <script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/js/lib/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/scripts.js"></script>
