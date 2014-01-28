@@ -37,11 +37,14 @@ function displayMovie(id) {
 				} else if (k === 'cover_url') {
 					$('[data-image=cover]').attr('src', v);
 				} else if (k === 'file_path') {
-					$('#movie').html('<source src="/' + v + '" type="' + movie['mime_type'] + '" />');
+					$('[data-video=movie]').html('<source src="/' + v + '" type="' + movie['mime_type'] + '" />');
 				} else if (k === 'trailers') {
 					$('#accordion').html(createAccordion(v));
 				}
             });
+			videojs("movie", {}, function(){
+				// Player (this) is initialized and ready.
+			});
         },
         error: function(jqXHR, textStatus, errorThrown) {
             $('#notification').html('<div class="alert alert-danger alert-dismissable">\

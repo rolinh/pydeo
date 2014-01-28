@@ -51,7 +51,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">Movie</div>
 		<div class="panel-body">
-			<video id="movie" class="video-js vjs-default-skin" controls preload="auto">
+			<video id="movie" data-video="movie" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
 				
 			</video>
 		</div>
