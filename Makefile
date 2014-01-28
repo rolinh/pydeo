@@ -32,7 +32,9 @@ clean:
 	find . -name '._*' -exec rm -f {} +
 
 clean_env: clean
-	rm -r bin include lib/python?\.? local man
+	rm -r ./env
+	mkdir env
+	touch env/.keep
 
 init_submodules:
 	git submodule init

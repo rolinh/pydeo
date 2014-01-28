@@ -31,8 +31,9 @@ Once you have `python`, you need to install `bottle`. There are several way to
 achieve this. Here is the one I use and recommend:
 
 * install `virtualenv` and `pip` if necessary
-* set up a virtual environment: `virtualenv -p python .`
-* activate it: `source bin/activate`
+* set up a virtual environment: `virtualenv -p python env` (replace `python`
+  with `python3.3` if `python` 3.3 is not your default `python` version)
+* activate it: `source env/bin/activate`
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
 * initialize the submodules: `make init_submodules`

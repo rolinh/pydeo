@@ -3,6 +3,8 @@
 *.directory
 *.pyc
 *.swp
+env/*
+!env/.keep
 
 # files
 alembic.ini
