@@ -2,6 +2,7 @@ from bottle import route
 
 from app.controllers.assets_controller import AssetsController
 from app.controllers.errors_controller import ErrorsController
+from app.controllers.files_controller import FilesController
 from app.controllers.index_controller import IndexController
 from app.controllers.movies_controller import MoviesController
 from app.controllers.music_controller import MusicController
@@ -16,8 +17,10 @@ def setup_routing(app):
     app.route('/js/<filename>', 'GET', AssetsController.javascripts)
     app.route('/js/lib/<filename>', 'GET', AssetsController.javascripts_libs)
     app.route('/css/<filename>', 'GET', AssetsController.stylesheets)
+    app.route('/swf/<filename>', 'GET', AssetsController.flash)
     app.route('/favicon.ico', 'GET', AssetsController.favicon)
     app.route('/favicon.png', 'GET', AssetsController.favicon)
+    app.route('/files/movies/<filename>', 'GET', FilesController.movies)
 
     # errors
     app.route('/error/404', 'GET', ErrorsController().error_404)

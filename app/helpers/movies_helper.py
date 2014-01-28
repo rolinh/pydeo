@@ -23,7 +23,8 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
 
     imdb = imdbpie.Imdb()
     for f in listdir(dir):
-        if not is_movie(dir + f):
+        file_path = dir + f
+        if not is_movie(file_path):
             continue
         if f in movies_in_db:
             continue
@@ -62,17 +63,19 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
                 movie.writers = ', '.join(p.name for p
                                           in to_list(m.writers_summary))
                 movie.trailers = ', '.join(['%s#%s' % (k, v) for (k, v)
-                                            in to_list(m.trailers.items())])
+                                            in m.trailers.items()])
             else:
                 movie.title = filename
         except ConnectionError:
             logging.warning('Unable to fetch movie information due to network'
                             ' connection problems: \"%s\"', title)
 
+        movie.file_path = file_path
         movie.file_name = f
         movie.file_extension = ext[1:]
         movie.file_modification_date = datetime.fromtimestamp(f_info.st_mtime)
         movie.file_size = f_info.st_size
+        movie.mime_type = guess_type(file_path)[0]
 
         sess.add(movie)
     sess.commit()
@@ -87,7 +90,6 @@ def is_movie(file):
         return False
     try:
         filetype = guess_type(file)[0]
-        print(filetype)
         if filetype[:5] == 'video':
             return True
         else:

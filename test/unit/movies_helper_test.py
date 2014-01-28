@@ -34,6 +34,8 @@ class MoviesHelperTests(unittest.TestCase):
         assert l[0].runtime == 152
         assert l[0].tagline == 'Why So Serious?'
         assert l[0].view_count == 0
+        assert l[0].mime_type == 'video/x-matroska'
+        assert l[0].file_path == dir + 'The Dark Knight.mkv'
         assert l[0].file_name == 'The Dark Knight.mkv'
         assert l[0].file_extension == 'mkv'
         assert l[0].file_size == 4434
@@ -41,9 +43,10 @@ class MoviesHelperTests(unittest.TestCase):
         assert l[1].title == 'movie_that_does_not_exist'
         assert l[1].view_count == 0
         assert l[1].user_updated is False
+        assert l[1].mime_type == 'video/x-msvideo'
+        assert l[1].file_path == dir + 'movie_that_does_not_exist.avi'
         assert l[1].file_name == 'movie_that_does_not_exist.avi'
         assert l[1].file_extension == 'avi'
-        print(l[1].file_size)
         assert l[1].file_size == 16818
 
     def test_is_movie(self):

@@ -9,9 +9,10 @@
 
     <title>Pydeo</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-<!--     <link href="/css/bootstrap-theme.min.css" rel="stylesheet"> -->
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!--     <link href="/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/video-js.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -75,6 +76,12 @@
       </div>
     </div>
 
+    <script type="text/javascript" src="/js/lib/video.js"></script>
+    <script>videojs.options.flash.swf = "/swf/video-js.swf"</script>
+    <script type="text/javascript">
+      document.createElement('video');document.createElement('audio');
+    </script>
+    <script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/js/lib/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/scripts.js"></script>

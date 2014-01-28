@@ -40,3 +40,10 @@ body {
 code {
   font-size: 80%;
 }
+
+/* helpers */
+.left { text-align: left !important; }
+.right { text-align: right !important; }
+.center { text-align: center !important; }
+.top-10 { margin-top: 10px !important; }
+.round-corners { border-radius: 5px !important; }

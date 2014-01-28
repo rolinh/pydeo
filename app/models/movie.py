@@ -39,6 +39,8 @@ class Movie(b.BaseInitializer.get_base()):
     trailers = Column(String)
     view_count = Column(Integer)
     user_updated = Column(Boolean)
+    mime_type = Column(String)
+    file_path = Column(String)
     file_name = Column(String)
     file_extension = Column(String)
     file_modification_date = Column(DateTime)
@@ -69,6 +71,8 @@ class Movie(b.BaseInitializer.get_base()):
 
         self.view_count = 0
         self.user_updated = False
+        self.mime_type = ''
+        self.file_path = ''
         self.file_name = ''
         self.file_extension = ''
         self.file_modification_date = datetime(1970, 1, 1)
@@ -99,6 +103,8 @@ class Movie(b.BaseInitializer.get_base()):
                 'trailers=%s,'
                 'view_count=%s,'
                 'user_updated=%s,'
+                'mime_type=%s,'
+                'file_path=%s,'
                 'file_name=%s,'
                 'file_extension=%s,'
                 'file_modification_date=%s,'
@@ -125,6 +131,8 @@ class Movie(b.BaseInitializer.get_base()):
                                     self.trailers,
                                     self.view_count,
                                     self.user_updated,
+                                    self.mime_type,
+                                    self.file_path,
                                     self.file_name,
                                     self.file_extension,
                                     self.file_modification_date,
@@ -155,6 +163,8 @@ class Movie(b.BaseInitializer.get_base()):
                 'trailers: %s\n'
                 'view_count: %s\n'
                 'user_updated: %s\n'
+                'mime_type:  %s\n'
+                'file_path: %s\n'
                 'file_name: %s\n'
                 'file_extension: %s\n'
                 'file_modification_date: %s\n'
@@ -181,6 +191,8 @@ class Movie(b.BaseInitializer.get_base()):
                                     self.trailers,
                                     self.view_count,
                                     self.user_updated,
+                                    self.mime_type,
+                                    self.file_path,
                                     self.file_name,
                                     self.file_extension,
                                     self.file_modification_date,

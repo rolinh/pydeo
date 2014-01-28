@@ -16,7 +16,7 @@
                     Rating
                 </th>
                 <th>
-                    Runtime
+                    Runtime (mn)
                 </th>
             </tr>
         </thead>
