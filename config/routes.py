@@ -17,6 +17,7 @@ def setup_routing(app):
     app.route('/js/<filename>', 'GET', AssetsController.javascripts)
     app.route('/js/lib/<filename>', 'GET', AssetsController.javascripts_libs)
     app.route('/css/<filename>', 'GET', AssetsController.stylesheets)
+    app.route('/css/font/<filename>', 'GET', AssetsController.fonts)
     app.route('/swf/<filename>', 'GET', AssetsController.flash)
     app.route('/favicon.ico', 'GET', AssetsController.favicon)
     app.route('/favicon.png', 'GET', AssetsController.favicon)
