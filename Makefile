@@ -1,5 +1,6 @@
 APP_DIR=app
 CONFIG_DIR=config
+DB_DIR=db
 LIB_DIR=lib
 CTRL_LIB_DIR=${LIB_DIR}/controllers
 MDLS_LIB_DIR=${LIB_DIR}/models
@@ -22,7 +23,7 @@ test_unit: set_settings
 test: set_settings test_func test_unit
 
 pep8:
-	${PEP8} ${APP_DIR} ${CTRL_LIB_DIR} ${MDLS_LIB_DIR} ${CONFIG_DIR} ${TEST_DIR}
+	${PEP8} ${APP_DIR} ${CTRL_LIB_DIR} ${MDLS_LIB_DIR} ${CONFIG_DIR} ${DB_DIR} ${TEST_DIR}
 
 clean:
 	find . -name '__pycache__' -exec rm -rf {} +
