@@ -42,7 +42,7 @@ def test_unit(environment='test', nosetests='nosetests'):
     run_cmd(nosetests + ' -w ' + unit_test_dir)
 
 
-@task('test_func', 'test_unit')
+@task('set_settings', 'test_func', 'test_unit')
 def test(nosetests='nosetests'):
     pass
 
