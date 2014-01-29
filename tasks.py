@@ -19,7 +19,7 @@ unit_test_dir = test_dir + '/unit'
 
 
 @task
-def set_settings(environment='production'):
+def set_settings(environment='production', nosetests=''):
     if environment not in ['production', 'development', 'test']:
         print('Error: ' + environment + ' is not a valid parameter',
               file=sys.stderr)
@@ -33,17 +33,17 @@ def set_settings(environment='production'):
 
 
 @task('set_settings')
-def test_func(environment='test'):
-    run_cmd('nosetests -w ' + func_test_dir)
+def test_func(environment='test', nosetests='nosetests'):
+    run_cmd(nosetests + ' -w ' + func_test_dir)
 
 
 @task('set_settings')
-def test_unit(environment='test'):
-    run_cmd('nosetests -w ' + unit_test_dir)
+def test_unit(environment='test', nosetests='nosetests'):
+    run_cmd(nosetests + ' -w ' + unit_test_dir)
 
 
 @task('test_func', 'test_unit')
-def test():
+def test(nosetests='nosetests'):
     pass
 
 

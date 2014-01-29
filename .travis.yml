@@ -3,5 +3,5 @@ python:
     - "3.3"
 install:
     - "pip install -r requirements.txt -r requirements_dev.txt"
-script: make init_submodules && NOSETESTS='nosetests -a !slow' make test
+script: invoke init_submodules && invoke test -n 'nosetests -a !slow'
 
