@@ -60,6 +60,11 @@
                 </li>
     -->
               </ul>
+              <form id="searchbar" class="navbar-form navbar-right form-search" role="search">
+                  <div class="form-group">
+                      <input type="text" class="form-control search-query" placeholder="Search"/>
+                  </div>
+              </form>
             </div><!--/.nav-collapse -->
           </div>
         </div>
