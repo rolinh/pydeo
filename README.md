@@ -36,7 +36,7 @@ achieve this. Here is the one I use and recommend:
 * activate it: `source env/bin/activate`
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
-* initialize the submodules: `make init_submodules`
+* initialize the submodules: `invoke init_submodules`
 
 Once done, follow the instructions from the settings section.
 
@@ -124,5 +124,5 @@ requirements to run the tests:
 
     pip install -r requirements_dev.txt
 
-Once done, make sure all tests pass by running `make test`.
-Make also sure your additions are conform to PEP8 by running `make pep8`.
+Once done, make sure all tests pass by running `invoke test`.
+Make also sure your additions are conform to PEP8 by running `invoke pep8`.
