@@ -2,7 +2,7 @@ function loadMoviesList() {
     $.ajax({
        url: '/api/movies',
        dataType: 'json',
-       method: 'get',
+       type: 'GET',
        async: 'true',
        success: function(data) {
            $.each(data, function(i,v) {
@@ -28,7 +28,7 @@ function displayMovie(id) {
     $.ajax({
         url: '/api/movies/id/' + id,
         dataType: 'json',
-        method: 'get',
+        type: 'GET',
         async: 'true',
         success: function(movie) {
             $.each(movie, function(k,v) {
