@@ -7,6 +7,7 @@ from app.controllers.index_controller import IndexController
 from app.controllers.movies_controller import MoviesController
 from app.controllers.music_controller import MusicController
 from app.controllers.series_controller import SeriesController
+from app.controllers.settings_controller import SettingsController
 
 from app.controllers.api.movies_api import MoviesAPIController
 
@@ -17,7 +18,8 @@ def setup_routing(app):
     app.route('/js/<filename>', 'GET', AssetsController.javascripts)
     app.route('/js/lib/<filename>', 'GET', AssetsController.javascripts_libs)
     app.route('/css/<filename>', 'GET', AssetsController.stylesheets)
-    app.route('/css/font/<filename>', 'GET', AssetsController.fonts)
+    app.route('/css/font/<filename>', 'GET', AssetsController.css_fonts)
+    app.route('/fonts/<filename>', 'GET', AssetsController.fonts)
     app.route('/swf/<filename>', 'GET', AssetsController.flash)
     app.route('/favicon.ico', 'GET', AssetsController.favicon)
     app.route('/favicon.png', 'GET', AssetsController.favicon)
@@ -39,6 +41,9 @@ def setup_routing(app):
 
     # series
     app.route('/series', 'GET', SeriesController().index)
+
+    # settings
+    app.route('/settings', 'GET', SettingsController().index)
 
     # REST API routes
     # movies
