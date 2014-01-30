@@ -5,3 +5,4 @@ SQLAlchemy>=0.9.1
 alembic>=0.6.2
 imdbpie>=1.4.3
 invoke>=0.7.0
+guessit>=0.7

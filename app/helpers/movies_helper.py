@@ -6,11 +6,13 @@ from os import path
 from os import stat
 from requests import ConnectionError
 
+from guessit import guess_movie_info
+import imdbpie
+
 from app.helpers.application_helper import to_list
 from app.models.movie import Movie
 from config.settings import movies_dir
 from lib.controllers import db_connector as db
-import imdbpie
 
 
 def update_movies_db(dir='files/' + movies_dir + '/'):
@@ -31,14 +33,13 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
 
         filename, ext = path.splitext(f)
         f_info = stat(dir + f)
-        # TODO use "guessit" to try detecting correct title (python3.3 seems
-        # broken in version 0.6.2)
-        title = filename
+        guess = guess_movie_info(file_path)
 
         movie = Movie()
+        movie.title = guess['title'] if guess['title'] else filename
         try:
-            m = imdb.find_by_title(title)
-            if m:
+            m = imdb.find_by_title(movie.title)
+            if m and m[0]['title'].lower() == movie.title.lower():
                 m = imdb.find_movie_by_id(m[0]['imdb_id'])
                 movie.imdb_id = m.imdb_id
                 movie.title = m.title
@@ -64,8 +65,6 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
                                           in to_list(m.writers_summary))
                 movie.trailers = ', '.join(['%s#%s' % (k, v) for (k, v)
                                             in m.trailers.items()])
-            else:
-                movie.title = filename
         except ConnectionError:
             logging.warning('Unable to fetch movie information due to network'
                             ' connection problems: \"%s\"', title)

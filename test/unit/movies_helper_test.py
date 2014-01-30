@@ -40,7 +40,7 @@ class MoviesHelperTests(unittest.TestCase):
         assert l[0].file_extension == 'mkv'
         assert l[0].file_size == 4434
 
-        assert l[1].title == 'movie_that_does_not_exist'
+        assert l[1].title == 'movie that does not exist'
         assert l[1].view_count == 0
         assert l[1].user_updated is False
         assert l[1].mime_type == 'video/x-msvideo'
