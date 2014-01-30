@@ -69,5 +69,4 @@ class MoviesHelperTests(unittest.TestCase):
             'The Dark Knight',
             'Dark Knight The')
 
-
     test_update_movies_db.slow = 1
