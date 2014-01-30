@@ -39,7 +39,9 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
         movie.title = guess['title'] if guess['title'] else filename
         try:
             m = imdb.find_by_title(movie.title)
-            if m and m[0]['title'].lower() == movie.title.lower():
+
+            if m and (are_movie_titles_close(movie.title, m[0]['title']) or
+                      are_movie_titles_close(m[0]['title'], movie.title)):
                 m = imdb.find_movie_by_id(m[0]['imdb_id'])
                 movie.imdb_id = m.imdb_id
                 movie.title = m.title
@@ -67,7 +69,7 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
                                             in m.trailers.items()])
         except ConnectionError:
             logging.warning('Unable to fetch movie information due to network'
-                            ' connection problems: \"%s\"', title)
+                            ' connection problems: \"%s\"', movie.title)
 
         movie.file_path = file_path
         movie.file_name = f
@@ -96,3 +98,16 @@ def is_movie(file):
     except:
         logging.warning('Unable to detect file type: \"%s\"', file)
         return False
+
+
+def are_movie_titles_close(title_a, title_b):
+    """
+    Compare titles. If all words from title_a are also in title_b, True is
+    returned. Otherwise, False is returned.
+    """
+    title_a_words = title_a.lower().split(' ')
+    title_b_words = title_b.lower().split(' ')
+    for w in title_a_words:
+        if not w in title_b_words:
+            return False
+    return True
