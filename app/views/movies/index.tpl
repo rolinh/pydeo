@@ -3,7 +3,9 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th></th>
+                <th  class="right">
+                <a data-remote="true" data-spinnable="true" data-callback="loadMoviesList();" href="/api/movies/reload"><i class="fa fa-refresh"></i></a>
+                </th>
                 <th>
                    Title
                 </th>
