@@ -10,8 +10,8 @@ function loadMoviesList() {
        success: function(data) {
            $.each(data, function(i,v) {
                var row = '<tr>';
-               row += '<td class="right"><a href="movies/id/' + v['id'] + '/play"><i class="fa fa-play"></i></a></td>';
-               row += '<td><a href="movies/id/' + v['id'] + '">' + v['title'] + '</a></td>';
+               row += '<td class="right"><a href="movies/' + v['id'] + '/play"><i class="fa fa-play"></i></a></td>';
+               row += '<td><a href="movies/' + v['id'] + '">' + v['title'] + '</a></td>';
                row += '<td>' + v['year'] + '</td>';
                row += '<td>' + v['genres'] + '</td>';
                row += '<td>' + v['rating'] + ' / 10</td>';
@@ -29,11 +29,11 @@ function loadMoviesList() {
 }
 
 /**
- * Display a movie in the page /movies/id/<id>
+ * Display a movie in the page /movies/<id>
  */
 function displayMovie(id) {
     $.ajax({
-        url: '/api/movies/id/' + id,
+        url: '/api/movies/' + id,
         dataType: 'json',
         type: 'GET',
         async: 'true',
@@ -66,7 +66,7 @@ function displayMovie(id) {
  */
 function displayMoviePlay(id) {
     $.ajax({
-        url: '/api/movies/id/' + id,
+        url: '/api/movies/' + id,
         dataType: 'json',
         type: 'GET',
         async: 'true',

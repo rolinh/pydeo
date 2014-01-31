@@ -12,13 +12,13 @@ class MoviesController(ApplicationController):
         return template('movies/index.tpl')
 
     def movie(self, id):
-        """Render /movie/id/<id> page for a detailed view of a movie."""
+        """Render /movie/<id> page for a detailed view of a movie."""
 
         return template('movies/movie.tpl', id=id)
 
     def play(self, id):
         """
-        Render /movie/id/<id>/play page with a player and play commands for a
+        Render /movie/<id>/play page with a player and play commands for a
         particular movie.
         """
 

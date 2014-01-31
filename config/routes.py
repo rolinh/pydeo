@@ -37,8 +37,8 @@ def setup_routing(app):
 
     # movies
     app.route('/movies', 'GET', MoviesController().index)
-    app.route('/movies/id/<id>', 'GET', MoviesController().movie)
-    app.route('/movies/id/<id>/play', 'GET', MoviesController().play)
+    app.route('/movies/<id>', 'GET', MoviesController().movie)
+    app.route('/movies/<id>/play', 'GET', MoviesController().play)
 
     # series
     app.route('/series', 'GET', SeriesController().index)
@@ -51,4 +51,4 @@ def setup_routing(app):
     app.route('/api/movies', 'GET', MoviesAPIController().movies)
     app.route('/api/movies/reload', 'GET', MoviesAPIController().movies_reload)
     app.route('/api/movies/title', 'GET', MoviesAPIController().movies_title)
-    app.route('/api/movies/id/<id>', 'GET', MoviesAPIController().movies_id)
+    app.route('/api/movies/<id>', 'GET', MoviesAPIController().movies_id)
