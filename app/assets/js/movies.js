@@ -38,6 +38,7 @@ function displayMovie(id) {
         type: 'GET',
         async: 'true',
         success: function(movie) {
+            $('#play').attr('href', '/movies/' + movie.id + '/play');
             $.each(movie, function(k,v) {
 				if ($('[data-key=' + k + ']').length > 0) {
 					$('[data-key=' + k + ']').prepend(v);

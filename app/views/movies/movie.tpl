@@ -2,7 +2,12 @@
 <div class="row">
 	<div class="col-md-3"></div>
 	<div class="col-md-9 center">
-		<h4 data-key="title"> (<span data-key="year"></span>)</h4>
+		<h4 >
+            <a id="play" href=""><i class="fa fa-play"></i></a>
+            &nbsp;
+            <span data-key="title"></span>
+            (<span data-key="year"></span>)
+         </h4>
 	</div>
 </div>
 <div class="row">
