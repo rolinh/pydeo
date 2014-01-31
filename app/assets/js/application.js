@@ -31,7 +31,9 @@ $(function () {
             },
             complete: function() {
                 if (isSpinnable) {
-                    icon.removeClass('fa-spin');
+                    setTimeout(function() {
+                        icon.removeClass('fa-spin');
+                    }, 1000);
                 }
 
                 if (callback !== undefined) {
