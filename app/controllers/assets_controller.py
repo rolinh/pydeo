@@ -9,25 +9,25 @@ class AssetsController(ApplicationController):
     def favicon():
         return static_file('favicon.png', root='app/assets/img')
 
-    def images(filename):
+    def img(filename):
         return static_file(filename, root='app/assets/img')
 
-    def javascripts(filename):
+    def js(filename):
         return static_file(filename, root='app/assets/js')
 
-    def javascripts_libs(filename):
+    def js_lib(filename):
         return static_file(filename, root='app/assets/js/lib')
 
-    def flash(filename):
+    def swf(filename):
         return static_file(filename, root='app/assets/swf')
 
-    def stylesheets(filename):
+    def css(filename):
         return static_file(filename, root='app/assets/css')
 
-    def stylesheets_libs(filename):
+    def css_lib(filename):
         return static_file(filename, root='app/assets/css/lib')
 
-    def css_libs_font(filename):
+    def css_lib_font(filename):
         return static_file(filename, root='app/assets/css/lib/font')
 
     def css_fonts(filename):

@@ -14,14 +14,14 @@ from app.controllers.api.movies_api import MoviesAPIController
 
 def setup_routing(app):
     # static files
-    app.route('/img/<filename>', 'GET', AssetsController.images)
-    app.route('/js/<filename>', 'GET', AssetsController.javascripts)
-    app.route('/js/lib/<filename>', 'GET', AssetsController.javascripts_libs)
-    app.route('/css/<filename>', 'GET', AssetsController.stylesheets)
-    app.route('/css/lib/<filename>', 'GET', AssetsController.stylesheets_libs)
-    app.route('/css/lib/font/<filename>', 'GET', AssetsController.css_libs_font)
+    app.route('/img/<filename>', 'GET', AssetsController.img)
+    app.route('/js/<filename>', 'GET', AssetsController.js)
+    app.route('/js/lib/<filename>', 'GET', AssetsController.js_lib)
+    app.route('/css/<filename>', 'GET', AssetsController.css)
+    app.route('/css/lib/<filename>', 'GET', AssetsController.css_lib)
+    app.route('/css/lib/font/<filename>', 'GET', AssetsController.css_lib_font)
     app.route('/css/fonts/<filename>', 'GET', AssetsController.css_fonts)
-    app.route('/swf/<filename>', 'GET', AssetsController.flash)
+    app.route('/swf/<filename>', 'GET', AssetsController.swf)
     app.route('/favicon.ico', 'GET', AssetsController.favicon)
     app.route('/favicon.png', 'GET', AssetsController.favicon)
     app.route('/files/movies/<filename>', 'GET', FilesController.movies)
