@@ -43,7 +43,7 @@ def test_unit(environment='test', nosetests='nosetests'):
 
 
 @task('set_settings', 'test_func', 'test_unit')
-def test(nosetests='nosetests'):
+def test(environment='test', nosetests='nosetests'):
     pass
 
 
