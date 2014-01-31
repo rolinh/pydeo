@@ -9,11 +9,11 @@
 
     <title>Pydeo</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<!--     <link href="/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"> -->
-    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!--     <link href="/css/lib/bootstrap-theme.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="/css/lib/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/lib/video-js.min.css" rel="stylesheet" type="text/css">
     <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/css/video-js.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

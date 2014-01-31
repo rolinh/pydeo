@@ -24,8 +24,11 @@ class AssetsController(ApplicationController):
     def stylesheets(filename):
         return static_file(filename, root='app/assets/css')
 
-    def css_fonts(filename):
-        return static_file(filename, root='app/assets/css/font')
+    def stylesheets_libs(filename):
+        return static_file(filename, root='app/assets/css/lib')
 
-    def fonts(filename):
-        return static_file(filename, root='app/assets/fonts')
+    def css_libs_font(filename):
+        return static_file(filename, root='app/assets/css/lib/font')
+
+    def css_fonts(filename):
+        return static_file(filename, root='app/assets/css/fonts')
