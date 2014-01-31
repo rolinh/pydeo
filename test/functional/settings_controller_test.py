@@ -4,7 +4,7 @@ from webtest import TestApp
 import test_helper
 
 
-class ErrorsControllerTests(unittest.TestCase):
+class SettingsControllerTests(unittest.TestCase):
 
     def test_settings(self):
         app = TestApp(test_helper.get_app())
