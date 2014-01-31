@@ -11,6 +11,7 @@ elif settings.environment == 'test':
 else:
     raise RuntimeError("Environment not set or incorrect")
 
+server = env.server
 debug = env.debug
 reloader = env.reloader
 db_url = env.db_url

@@ -1,5 +1,5 @@
 from datetime import datetime
-import logging
+from logging import warning
 from mimetypes import guess_type
 from os import listdir
 from os import path
@@ -12,16 +12,14 @@ import imdbpie
 from app.helpers.application_helper import to_list
 from app.models.movie import Movie
 from config.settings import movies_dir
-from lib.controllers import db_connector as db
 
 
-def update_movies_db(dir='files/' + movies_dir + '/'):
+def update_movies_db(db, dir='files/' + movies_dir + '/'):
     """
     Find all movie files in the movie folder and add them to the database.
     """
 
-    sess = db.DbConnector.session
-    movies_in_db = [m.file_name for m in sess.query(Movie).all()]
+    movies_in_db = [m.file_name for m in db.query(Movie).all()]
 
     imdb = imdbpie.Imdb()
     for f in listdir(dir):
@@ -68,8 +66,8 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
                 movie.trailers = ', '.join(['%s#%s' % (k, v) for (k, v)
                                             in m.trailers.items()])
         except ConnectionError:
-            logging.warning('Unable to fetch movie information due to network'
-                            ' connection problems: \"%s\"', movie.title)
+            warning('Unable to fetch movie information due to network'
+                    ' connection problems: \"%s\"', movie.title)
 
         movie.file_path = file_path
         movie.file_name = f
@@ -78,8 +76,7 @@ def update_movies_db(dir='files/' + movies_dir + '/'):
         movie.file_size = f_info.st_size
         movie.mime_type = guess_type(file_path)[0]
 
-        sess.add(movie)
-    sess.commit()
+        db.add(movie)
 
 
 def is_movie(file):
@@ -96,7 +93,7 @@ def is_movie(file):
         else:
             return False
     except:
-        logging.warning('Unable to detect file type: \"%s\"', file)
+        warning('Unable to detect file type: \"%s\"', file)
         return False
 
 

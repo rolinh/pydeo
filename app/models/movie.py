@@ -1,16 +1,17 @@
-from sqlalchemy import Column
-from sqlalchemy import BigInteger
-from sqlalchemy import Boolean
-from sqlalchemy import DateTime
-from sqlalchemy import Integer
-from sqlalchemy import String
-
+from sqlalchemy import (
+    Column,
+    BigInteger,
+    Boolean,
+    DateTime,
+    Integer,
+    String
+)
 from datetime import datetime
 
-from lib.models import base_initializer as b
+from app.models.base import Base
 
 
-class Movie(b.BaseInitializer.get_base()):
+class Movie(Base):
     """Model of a movie."""
 
     __tablename__ = 'movies'

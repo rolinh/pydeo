@@ -1,10 +1,14 @@
 # environment (production, development, test)
 environment = 'production'
 
+# server backend (cherrypy, gunicorn, waitress, tornado, wsgiref, ...)
+# if set to '', a default server backend will be used
+server = ''
+
 # define host
 host = '0.0.0.0'
 # define port
-port = 80
+port = 8080
 
 # database url
 # it should be the same url as the one defined in alembic.ini file

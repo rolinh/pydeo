@@ -10,9 +10,6 @@ from invoke import (
 app_dir = 'app'
 config_dir = 'config'
 db_dir = 'db'
-lib_dir = 'lib'
-ctrl_lib_dir = lib_dir + '/controllers'
-mdls_lib_dir = lib_dir + '/models'
 test_dir = 'test'
 func_test_dir = test_dir + '/functional'
 unit_test_dir = test_dir + '/unit'
@@ -49,8 +46,8 @@ def test(environment='test', nosetests='nosetests'):
 
 @task
 def pep8():
-    cmd = 'pep8 pydeo.py tasks.py ' + app_dir + ' ' + ctrl_lib_dir + ' '\
-          + mdls_lib_dir + ' ' + config_dir + ' ' + db_dir + ' ' + test_dir
+    cmd = 'pep8 pydeo.py tasks.py ' + app_dir + ' ' + config_dir + ' '\
+          + db_dir + ' ' + test_dir
     run_cmd(cmd)
 
 

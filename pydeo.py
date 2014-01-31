@@ -5,18 +5,21 @@ __version__ = '0.1.0'
 
 import sys
 import bottle
+from bottle.ext import sqlalchemy
+from logging import info
+from sqlalchemy import create_engine
 
 from app.helpers import files_dir_helper
+from app.models.base import Base
 from config import environment
 from config import routes
 from config import settings
-from lib.controllers import db_connector as db
-from lib.models import base_initializer as b
 
 
 class Pydeo:
 
     def __init__(self,
+                 server='auto',
                  host='0.0.0.0',
                  port=8080,
                  db_url='sqlite:///:memory:',
@@ -24,6 +27,7 @@ class Pydeo:
                  reloader=False,
                  debug=False,
                  template_path='./app/views/'):
+        self.server_type = server
         self.host = host
         self.port = port
         self.reloader = reloader
@@ -44,25 +48,62 @@ class Pydeo:
 
         bottle.debug(self.debug)
 
-        db.DbConnector.init(db_url=db_url, echo=db_echo)
-        b.BaseInitializer.get_base()
-        b.BaseInitializer.Base.metadata.create_all(db.DbConnector.engine)
+        engine = create_engine(db_url, echo=db_echo)
+
+        sqlalchemy_plugin = sqlalchemy.Plugin(
+            engine,
+            Base.metadata,
+            keyword='db',
+            create=True,
+            commit=True,
+            use_kwargs=False
+        )
+        self.app.install(sqlalchemy_plugin)
+
 
 if __name__ == "__main__":
+    info('Pydeo started')
     db_url = settings.db_url
+    server = settings.server
     if not db_url:
         db_url = environment.db_url
+    if not server:
+        server = environment.server
 
-    a = Pydeo(host=settings.host,
-              port=settings.port,
-              db_url=db_url,
-              db_echo=environment.db_echo,
-              reloader=environment.reloader,
-              debug=environment.debug)
+    info('\nApplication settings:\n'
+         'server = %s\n'
+         'host = %s\n'
+         'port = %s\n'
+         'db_url = %s\n'
+         'db_echo = %s\n'
+         'reloader = %s\n'
+         'debug = %s\n',
+         server,
+         settings.host,
+         settings.port,
+         db_url,
+         environment.db_echo,
+         environment.reloader,
+         environment.debug)
+    a = Pydeo(
+        server=server,
+        host=settings.host,
+        port=settings.port,
+        db_url=db_url,
+        db_echo=environment.db_echo,
+        reloader=environment.reloader,
+        debug=environment.debug
+    )
     chk_dir = files_dir_helper.check_dir_presence(a.dir_list)
     if chk_dir != 'OK':
         sys.stderr.write(('At least one of the media folders set in settings '
                           'does not seem to exist: {}\n').format(chk_dir))
         sys.exit(1)
 
-    bottle.run(a.app, reloader=a.reloader, host=a.host, port=a.port)
+    bottle.run(
+        a.app,
+        server=a.server_type,
+        reloader=a.reloader,
+        host=a.host,
+        port=a.port
+    )

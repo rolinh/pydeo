@@ -1,3 +1,6 @@
+# server backend
+server = 'wsgiref'
+
 # debug error messages
 debug = True
 

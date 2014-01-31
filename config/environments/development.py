@@ -1,3 +1,6 @@
+# server backend
+server = 'tornado'
+
 # debug error messages
 debug = True
 
