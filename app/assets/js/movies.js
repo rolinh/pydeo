@@ -1,3 +1,6 @@
+/**
+ * Create a table with the list of movies for /movies page.
+ */
 function loadMoviesList() { 
     $.ajax({
        url: '/api/movies',
@@ -24,6 +27,9 @@ function loadMoviesList() {
    });
 }
 
+/**
+ * Display a movie in the page /movies/id/<id>
+ */
 function displayMovie(id) {
     $.ajax({
         url: '/api/movies/id/' + id,
@@ -36,15 +42,15 @@ function displayMovie(id) {
 					$('[data-key=' + k + ']').prepend(v);
 				} else if (k === 'cover_url') {
 					$('[data-image=cover]').attr('src', v);
-				} else if (k === 'file_path') {
-					$('[data-video=movie]').html('<source src="/' + v + '" type="' + movie['mime_type'] + '" />');
 				} else if (k === 'trailers') {
 					$('#accordion').html(createAccordion(v));
 				}
             });
-			videojs("movie", {}, function(){
+            /*
+			videojs("trailer", {}, function(){
 				// Player (this) is initialized and ready.
 			});
+            */
         },
         error: function(jqXHR, textStatus, errorThrown) {
             $('#notification').html('<div class="alert alert-danger alert-dismissable">\
@@ -54,6 +60,34 @@ function displayMovie(id) {
     });
 }
 
+/**
+ * Display movie play page.
+ */
+function displayMoviePlay(id) {
+    $.ajax({
+        url: '/api/movies/id/' + id,
+        dataType: 'json',
+        type: 'GET',
+        async: 'true',
+        success: function(movie) {
+            $('[data-key=title]').text(movie.title);
+			$('[data-video=movie]').html('<source src="/' + movie.file_path + '" type="' + movie.mime_type + '" />');
+			videojs("movie", {}, function(){
+				// Player (this) is initialized and ready.
+			});
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $('#notification').html('<div class="alert alert-danger alert-dismissable">\
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\
+                <strong>Error! </strong>' + textStatus + '</div>');
+        }
+    });
+}
+
+/**
+ * Take a comma separated list of URLs, in this form: format#url
+ * Then, render an accordion with movie trailers based on the URL.
+ */
 function createAccordion(urlList) {
 	/* in case there is no trailers */
 	if (urlList === '') {
@@ -83,3 +117,4 @@ function createAccordion(urlList) {
 
 	return panel;
 }
+

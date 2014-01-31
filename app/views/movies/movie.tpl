@@ -47,16 +47,6 @@
 <div class="row">
 	<div class="panel-group" id="accordion"></div>
 </div>
-<div class="row top-10">
-	<div class="panel panel-default">
-		<div class="panel-heading">Movie</div>
-		<div class="panel-body">
-			<video id="movie" data-video="movie" class="round-corners video-js vjs-default-skin" controls preload="auto" data-setup="{}">
-				
-			</video>
-		</div>
-	</div>
-</div>
 
 <script type="text/javascript" src="/js/movies.js"></script>
 <script type="text/javascript">displayMovie(${id})</script>
