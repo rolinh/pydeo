@@ -86,6 +86,6 @@
     </script>
     <script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/js/lib/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/scripts.js"></script>
+    <script type="text/javascript" src="/js/application.js"></script>
   </body>
 </html>
