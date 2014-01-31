@@ -41,6 +41,11 @@ code {
   font-size: 80%;
 }
 
+/* font-awesome icons with a link need to be black */
+a i {
+    color: black;
+}
+
 /* helpers */
 .left { text-align: left !important; }
 .right { text-align: right !important; }

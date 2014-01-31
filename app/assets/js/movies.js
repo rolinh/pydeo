@@ -10,6 +10,7 @@ function loadMoviesList() {
        success: function(data) {
            $.each(data, function(i,v) {
                var row = '<tr>';
+               row += '<td class="right"><a href="movies/id/' + v['id'] + '/play"><i class="fa fa-play"></i></a></td>';
                row += '<td><a href="movies/id/' + v['id'] + '">' + v['title'] + '</a></td>';
                row += '<td>' + v['year'] + '</td>';
                row += '<td>' + v['genres'] + '</td>';
