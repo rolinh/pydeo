@@ -8,6 +8,8 @@ function loadMoviesList() {
        type: 'GET',
        async: 'true',
        success: function(data) {
+           $('#movies-list').html('');
+
            $.each(data, function(i,v) {
                var row = '<tr>';
                row += '<td class="right"><a href="movies/' + v['id'] + '/play"><i class="fa fa-play"></i></a></td>';
