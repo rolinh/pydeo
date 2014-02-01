@@ -9,14 +9,14 @@ computer on which **pydeo** is installed. Other features will include playing
 music or access complete movie description with trailer, list of actores and so
 on.
 
-It is written in `python` using the `bottle` framework. Its main goals are to be
-simple, lightweight and easy to the eyes. Therefore, it should run on very low
-power platforms which makes it ideal for micro computers such as the Raspberry
-Pi.
+It is written in `python` using the [bottle](http://bottlepy.org/docs/stable/)
+framework. Its main goals are to be simple, lightweight and easy to the eyes.
+Therefore, it should run on very low power platforms which makes it ideal for
+micro computers such as the Raspberry Pi.
 
-**pydeo** uses `twitter bootstrap` and `jquery` to make the interface look nice
-and ease my pain in creating a beautiful UI (yeah, I'm not a designer guy, just
-a simple developer).
+**pydeo** uses [twitter bootstrap](http://getbootstrap.com/) and
+[jquery](http://jquery.com/) to make the interface look nice and ease my pain in
+creating a beautiful UI (yeah, I'm not a designer guy, just a simple developer).
 
 ## DISCLAIMER
 
@@ -58,7 +58,7 @@ Then, simply run `run.py`:
 
     python run.py
 
-Open your browser and navigate to `http://localhost:8080`.
+Open your browser and navigate to [](http://localhost:8080).
 
 ### ADVANCED CONFIGURATION
 
@@ -80,10 +80,11 @@ also supports `python 3.3` should be fine. Have a look at
 for the full list. However, I haven't tested all of them of course.
 
 Adjust `sqlalchemy.url` in `alembic.ini` file if you do not intend to use
-`SQLite`. If you modify this line, set the same database URL in
-`pydeo/config/settings.py`.
+[SQLite](http://www.sqlite.org/). If you modify this line, set the same database
+URL in `pydeo/config/settings.py`.
 
-Supported databases are the ones supported by `SQLAlchemy`:
+Supported databases are the ones supported by
+[SQLAlchemy](http://www.sqlalchemy.org/):
 
 * Drizzle
 * Firebird
