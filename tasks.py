@@ -42,13 +42,15 @@ def test_unit(environment='test', nosetests='nosetests'):
 def test(environment='test', nosetests='nosetests'):
     pass
 
+
 @task('set_settings')
 def setup():
     src = 'alembic.ini.sample'
     dst = 'alembic.ini'
     print('Copying ' + src + ' to ' + dst)
     copy(src, dst)
-    print('Done') 
+    print('Done')
+
 
 @task
 def pep8():
