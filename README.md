@@ -40,8 +40,8 @@ achieve this. Here is the one I use and recommend:
 * if you set up **pydeo** as described in basic configuration section, install
   `tornado`:
   `pip install tornado`
-  otherwise, install the appropriate server backend by the one you set up in the
-  `settings.py` file
+  otherwise, install the appropriate server backend corresponding to the one you
+  set up in the `settings.py` file
 
 Once done, follow the instructions from the settings section.
 
