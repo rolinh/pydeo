@@ -58,7 +58,7 @@ Then, simply run `run.py`:
 
     python run.py
 
-Open your browser and navigate to [](http://localhost:8080).
+Open your browser and navigate to <http://localhost:8080>.
 
 ### ADVANCED CONFIGURATION
 
