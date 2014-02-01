@@ -8,9 +8,9 @@ env/*
 
 # files
 alembic.ini
-config/settings.py
-db/dev.db
-db/pydeo.db
+pydeo/config/settings.py
+pydeo/db/dev.db
+pydeo/db/pydeo.db
 
 # folders
 _build

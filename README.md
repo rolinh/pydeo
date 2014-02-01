@@ -37,6 +37,11 @@ achieve this. Here is the one I use and recommend:
 * install the required libraries through `pip`:
   `pip install -r requirements.txt`
 * initialize the submodules: `invoke init_submodules`
+* if you set up **pydeo** as described in basic configuration section, install
+  `tornado`:
+  `pip install tornado`
+  otherwise, install the appropriate server backend by the one you set up in the
+  `settings.py` file
 
 Once done, follow the instructions from the settings section.
 
@@ -44,24 +49,39 @@ Once done, follow the instructions from the settings section.
 
 ### BASIC CONFIGURATION
 
-Copy `config/settings.py.sample` to `config/settings.py`.
-Copy `alembic.ini.sample` to `alembic.ini`.
+Run the following command to set default settings (should be fine for most
+users):
 
-You should be OK for a simple configuration.
-You can simply run `pydeo.py`:
+    invoke setup
 
-    python pydeo.py
+Then, simply run `run.py`:
+
+    python run.py
 
 Open your browser and navigate to `http://localhost:8080`.
 
 ### ADVANCED CONFIGURATION
 
-Copy `config/settings.py.sample` to `config/settings.py` and adjust the settings
-as you like.
+Run the following command to set default settings:
 
-Copy `alembic.ini.sample` to `alembic.ini` and adjust `sqlalchemy.url` if you do
-not intend to use `SQLite`. If you modify this line, set the same database URL
-in `config/settings.py`.
+    invoke setup
+
+Then, adjust the settings as you like in `pydeo/config/settings.py`.
+Some of the possible server backends are the following:
+
+* cherrypy
+* gunicorn
+* tornado
+* waitress
+
+The theory is that every server backend supported by the `bottle` framework that
+also supports `python 3.3` should be fine. Have a look at
+[bottle documentation](http://bottlepy.org/docs/stable/deployment.html#switching-the-server-backend)
+for the full list. However, I haven't tested all of them of course.
+
+Adjust `sqlalchemy.url` in `alembic.ini` file if you do not intend to use
+`SQLite`. If you modify this line, set the same database URL in
+`pydeo/config/settings.py`.
 
 Supported databases are the ones supported by `SQLAlchemy`:
 
