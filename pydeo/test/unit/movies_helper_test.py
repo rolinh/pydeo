@@ -28,21 +28,6 @@ class MoviesHelperTests(unittest.TestCase):
 
             l = db.query(movie.Movie).order_by(movie.Movie.title).all()
 
-            # some attributes, eg votes and rating, cannot be tested as they
-            # are subject to change over time
-            assert l[0].imdb_id == 'tt0468569'
-            assert l[0].title == 'The Dark Knight'
-            assert l[0].type == 'feature'
-            assert l[0].genres == 'Action, Crime, Drama, Thriller'
-            assert l[0].directors == 'Christopher Nolan'
-            assert l[0].cast == ('Christian Bale, Heath Ledger, Aaron Eckhart,'
-                                 ' Michael Caine')
-            assert l[0].writers == 'Jonathan Nolan, Christopher Nolan'
-            assert l[0].year == 2008
-            assert l[0].release_date == '2008-07-18'
-            assert l[0].certification == 'PG-13'
-            assert l[0].runtime == 152
-            assert l[0].tagline == 'Why So Serious?'
             assert l[0].view_count == 0
             assert l[0].mime_type == 'video/x-matroska'
             assert l[0].file_path == dir + 'The Dark Knight.mkv'
@@ -59,6 +44,29 @@ class MoviesHelperTests(unittest.TestCase):
             assert l[1].file_extension == 'avi'
             assert l[1].file_size == 16818
 
+    def test_fetch_movies_information(self):
+        def test(db):
+            dir = 'data/movies/'
+            movies_helper.update_movies_db(dir)
+            assert db.query(movie.Movie).count() == 2
+
+            l = db.query(movie.Movie).order_by(movie.Movie.title).all()
+            # some attributes, eg votes and rating, cannot be tested as they
+            # are subject to change over time
+            assert l[0].imdb_id == 'tt0468569'
+            assert l[0].type == 'feature'
+            assert l[0].genres == 'Action, Crime, Drama, Thriller'
+            assert l[0].title == 'The Dark Knight'
+            assert l[0].directors == 'Christopher Nolan'
+            assert l[0].cast == ('Christian Bale, Heath Ledger, Aaron Eckhart,'
+                                 ' Michael Caine')
+            assert l[0].writers == 'Jonathan Nolan, Christopher Nolan'
+            assert l[0].year == 2008
+            assert l[0].release_date == '2008-07-18'
+            assert l[0].certification == 'PG-13'
+            assert l[0].runtime == 152
+            assert l[0].tagline == 'Why So Serious?'
+
     def test_are_movie_titles_close(self):
         assert not movies_helper.are_movie_titles_close(
             'The Island That Does Not Exist',
@@ -70,4 +78,4 @@ class MoviesHelperTests(unittest.TestCase):
             'The Dark Knight',
             'Dark Knight The')
 
-    test_update_movies_db.slow = 1
+    test_fetch_movies_information.slow = 1
