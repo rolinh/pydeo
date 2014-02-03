@@ -62,7 +62,6 @@ def fetch_movies_information(db):
 
     imdb = imdbpie.Imdb()
     for movie in db.query(Movie).all():
-        print(movie)
         try:
             m = imdb.find_by_title(movie.title)
 
