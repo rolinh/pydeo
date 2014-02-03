@@ -59,15 +59,6 @@ class MoviesHelperTests(unittest.TestCase):
             assert l[1].file_extension == 'avi'
             assert l[1].file_size == 16818
 
-    def test_is_movie(self):
-        dir = 'data/movies/'
-
-        assert not movies_helper.is_movie('foo')
-        assert not movies_helper.is_movie('/tmp')
-        assert not movies_helper.is_movie(dir + 'foo.txt')
-        assert movies_helper.is_movie(dir + 'The Dark Knight.mkv')
-        assert movies_helper.is_movie(dir + 'movie_that_does_not_exist.avi')
-
     def test_are_movie_titles_close(self):
         assert not movies_helper.are_movie_titles_close(
             'The Island That Does Not Exist',

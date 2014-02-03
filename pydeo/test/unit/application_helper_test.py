@@ -17,3 +17,12 @@ class ApplicationHelperTests(unittest.TestCase):
         assert ah.bytes2human(10**9) == '953M'
         assert ah.bytes2human(10**12) == '931G'
         assert ah.bytes2human(10**15) == '909T'
+
+    def test_is_video(self):
+        dir = 'data/movies/'
+
+        assert not ah.is_video('foo')
+        assert not ah.is_video('/tmp')
+        assert not ah.is_video(dir + 'foo.txt')
+        assert ah.is_video(dir + 'The Dark Knight.mkv')
+        assert ah.is_video(dir + 'movie_that_does_not_exist.avi')
