@@ -28,7 +28,6 @@ def update_movies_db(db, dir='files/' + movies_dir + '/'):
 
     movies_in_db = [m.file_path for m in db.query(Movie).all()]
 
-    imdb = imdbpie.Imdb()
     for f in list_videos(dir):
         if f in movies_in_db:
             continue
@@ -44,6 +43,26 @@ def update_movies_db(db, dir='files/' + movies_dir + '/'):
         except:
             movie.title = filename
 
+        movie.file_path = f
+        movie.file_name = f
+        movie.file_extension = ext[1:]
+        movie.file_modification_date = datetime.fromtimestamp(f_info.st_mtime)
+        movie.file_size = f_info.st_size
+        movie.mime_type = guess_type(f)[0]
+
+        db.add(movie)
+    db.commit()
+
+
+def fetch_movies_information(db):
+    """
+    Fetch informations about movies such as the movie cover, list of actors and
+    so on.
+    """
+
+    imdb = imdbpie.Imdb()
+    for movie in db.query(Movie).all():
+        print(movie)
         try:
             m = imdb.find_by_title(movie.title)
 
@@ -77,15 +96,7 @@ def update_movies_db(db, dir='files/' + movies_dir + '/'):
         except ConnectionError:
             warning('Unable to fetch movie information due to network'
                     ' connection problems: \"%s\"', movie.title)
-
-        movie.file_path = f
-        movie.file_name = f
-        movie.file_extension = ext[1:]
-        movie.file_modification_date = datetime.fromtimestamp(f_info.st_mtime)
-        movie.file_size = f_info.st_size
-        movie.mime_type = guess_type(f)[0]
-
-        db.add(movie)
+    db.commit()
 
 
 def are_movie_titles_close(title_a, title_b):

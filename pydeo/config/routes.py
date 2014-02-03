@@ -50,6 +50,7 @@ def setup_routing(app):
     # REST API routes
     # movies
     app.route('/api/movies', 'GET', MoviesAPIController().movies)
+    app.route('/api/movies/fetch', 'GET', MoviesAPIController().movies_fetch)
     app.route('/api/movies/reload', 'GET', MoviesAPIController().movies_reload)
     app.route('/api/movies/title', 'GET', MoviesAPIController().movies_title)
     app.route('/api/movies/<id>', 'GET', MoviesAPIController().movies_id)

@@ -35,3 +35,8 @@ class MoviesAPIController():
         that where not in database previously."""
         mh.update_movies_db(db)
         return "OK"
+
+    def movies_fetch(self, db):
+        """Fetches movies information online."""
+        mh.fetch_movies_information(db)
+        return "OK"
