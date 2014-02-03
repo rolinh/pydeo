@@ -1,5 +1,11 @@
-from sqlalchemy.ext.declarative import DeclarativeMeta
 import json
+from mimetypes import guess_type
+from logging import warning
+from os import (
+    listdir,
+    path
+)
+from sqlalchemy.ext.declarative import DeclarativeMeta
 
 
 class AlchemyEncoder(json.JSONEncoder):
@@ -50,3 +56,35 @@ def bytes2human(n, format="%(value)i%(symbol)s"):
             value = float(n) / prefix[symbol]
             return format % locals()
     return format % dict(symbol=symbols[0], value=n)
+
+
+def is_video(file):
+    """
+    Try to determine if the given file is a movie or not.
+    Return true if it is one, false otherwise.
+    """
+    if not path.isfile(file):
+        return False
+    try:
+        filetype = guess_type(file)[0]
+        if filetype[:5] == 'video':
+            return True
+        else:
+            return False
+    except:
+        warning('Unable to detect file type: \"%s\"', file)
+        return False
+
+
+def list_videos(dir):
+    """
+    Return a list with the path to all files of type video found in the
+    directory dir.
+    """
+    l = []
+    for f in listdir(dir):
+        file_path = dir + f
+        if not is_video(file_path):
+            continue
+        l.append(file_path)
+    return l

@@ -1,15 +1,22 @@
 from datetime import datetime
-from logging import warning
+from logging import (
+    warning,
+    info
+)
 from mimetypes import guess_type
-from os import listdir
-from os import path
-from os import stat
+from os import (
+    path,
+    stat
+)
 from requests import ConnectionError
 
 from guessit import guess_movie_info
 import imdbpie
 
-from pydeo.app.helpers.application_helper import to_list
+from pydeo.app.helpers.application_helper import (
+    to_list,
+    list_videos
+)
 from pydeo.app.models.movie import Movie
 from pydeo.config.settings import movies_dir
 
@@ -19,22 +26,24 @@ def update_movies_db(db, dir='files/' + movies_dir + '/'):
     Find all movie files in the movie folder and add them to the database.
     """
 
-    movies_in_db = [m.file_name for m in db.query(Movie).all()]
+    movies_in_db = [m.file_path for m in db.query(Movie).all()]
 
     imdb = imdbpie.Imdb()
-    for f in listdir(dir):
-        file_path = dir + f
-        if not is_movie(file_path):
-            continue
+    for f in list_videos(dir):
         if f in movies_in_db:
             continue
 
+        info("Currently scanning: " + f)
         filename, ext = path.splitext(f)
-        f_info = stat(dir + f)
-        guess = guess_movie_info(file_path)
+        f_info = stat(f)
+        guess = guess_movie_info(f)
 
         movie = Movie()
-        movie.title = guess['title'] if guess['title'] else filename
+        try:
+            movie.title = guess['title']
+        except:
+            movie.title = filename
+
         try:
             m = imdb.find_by_title(movie.title)
 
@@ -69,32 +78,14 @@ def update_movies_db(db, dir='files/' + movies_dir + '/'):
             warning('Unable to fetch movie information due to network'
                     ' connection problems: \"%s\"', movie.title)
 
-        movie.file_path = file_path
+        movie.file_path = f
         movie.file_name = f
         movie.file_extension = ext[1:]
         movie.file_modification_date = datetime.fromtimestamp(f_info.st_mtime)
         movie.file_size = f_info.st_size
-        movie.mime_type = guess_type(file_path)[0]
+        movie.mime_type = guess_type(f)[0]
 
         db.add(movie)
-
-
-def is_movie(file):
-    """
-    Try to determine if the given file is a movie or not.
-    Return true if it is one, false otherwise.
-    """
-    if not path.isfile(file):
-        return False
-    try:
-        filetype = guess_type(file)[0]
-        if filetype[:5] == 'video':
-            return True
-        else:
-            return False
-    except:
-        warning('Unable to detect file type: \"%s\"', file)
-        return False
 
 
 def are_movie_titles_close(title_a, title_b):
