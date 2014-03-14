@@ -1,9 +1,9 @@
-bottle>=0.11.6
-bottle-sqlalchemy>=0.4
+bottle>=0.12.5
+bottle-sqlalchemy>=0.4.1
 Mako>=0.9.1
 requests>=2.2.1
-SQLAlchemy>=0.9.1
-alembic>=0.6.2
-imdbpie>=1.4.3
+SQLAlchemy>=0.9.3
+alembic>=0.6.3
+imdbpie>=1.4.4
 invoke>=0.7.0
-guessit>=0.7
+guessit>=0.7.1
