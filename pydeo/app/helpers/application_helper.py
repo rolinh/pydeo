@@ -2,8 +2,8 @@ import json
 from mimetypes import guess_type
 from logging import warning
 from os import (
-    listdir,
-    path
+    path,
+    walk
 )
 from sqlalchemy.ext.declarative import DeclarativeMeta
 
@@ -82,9 +82,10 @@ def list_videos(dir):
     directory dir.
     """
     l = []
-    for f in listdir(dir):
-        file_path = dir + f
-        if not is_video(file_path):
-            continue
-        l.append(file_path)
+    for dirpath, dirnames, filenames in walk(dir):
+        for filename in filenames:
+            file_path = path.join(dirpath, filename)
+            if not is_video(file_path):
+                continue
+            l.append(file_path)
     return l
