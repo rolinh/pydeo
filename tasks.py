@@ -54,7 +54,8 @@ def setup():
 
 @task
 def pep8():
-    cmd = 'pep8 run.py tasks.py ' + pydeo_dir
+    # ignore versions folder since migration scripts are auto-generated
+    cmd = 'pep8 --exclude=pydeo/db/versions/* run.py tasks.py ' + pydeo_dir
     run_cmd(cmd)
 
 
