@@ -6,7 +6,7 @@ from logging.config import fileConfig
 import os
 import sys
 
-# add current working directory to path in order to to import pydeo models
+# add current working directory to path in order to import pydeo models
 sys.path = [os.getcwd()] + sys.path
 from pydeo.app import models
 
@@ -18,6 +18,8 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
+# add your model's MetaData object here
+# for 'autogenerate' support
 target_metadata = models.Base.metadata
 
 # other values from the config, defined by the needs of env.py,
