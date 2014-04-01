@@ -1,6 +1,7 @@
 import unittest
 
 import test_helper
+assert test_helper  # silence pyflakes
 
 from pydeo.app.helpers import files_dir_helper
 
