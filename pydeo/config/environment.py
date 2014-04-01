@@ -1,5 +1,3 @@
-import os
-
 from pydeo.config import settings
 
 if settings.environment == 'production':

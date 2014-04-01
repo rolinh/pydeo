@@ -1,5 +1,3 @@
-from bottle import route
-
 from pydeo.app.controllers.assets_controller import AssetsController
 from pydeo.app.controllers.errors_controller import ErrorsController
 from pydeo.app.controllers.files_controller import FilesController
