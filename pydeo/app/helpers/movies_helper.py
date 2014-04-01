@@ -106,6 +106,6 @@ def are_movie_titles_close(title_a, title_b):
     title_a_words = title_a.lower().split(' ')
     title_b_words = title_b.lower().split(' ')
     for w in title_a_words:
-        if not w in title_b_words:
+        if w not in title_b_words:
             return False
     return True

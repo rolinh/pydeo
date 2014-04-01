@@ -34,7 +34,7 @@ class Pydeo:
         self.app = bottle.Bottle()
 
         routes.setup_routing(self.app)
-        if not template_path in bottle.TEMPLATE_PATH:
+        if template_path not in bottle.TEMPLATE_PATH:
             bottle.TEMPLATE_PATH.append(template_path)
         if './' in bottle.TEMPLATE_PATH:
             bottle.TEMPLATE_PATH.remove('./')
