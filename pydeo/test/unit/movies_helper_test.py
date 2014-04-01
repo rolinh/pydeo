@@ -1,15 +1,11 @@
 import bottle
 from bottle.ext import sqlalchemy
-import json
 from sqlalchemy import create_engine
 import unittest
 
 from pydeo.app.helpers import movies_helper
 from pydeo.app.models import movie
-from test_helper import (
-    Base,
-    Db_url
-)
+from test_helper import Db_url
 
 
 class MoviesHelperTests(unittest.TestCase):
