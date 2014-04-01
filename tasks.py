@@ -65,6 +65,11 @@ def pyflakes():
     run_cmd(cmd)
 
 
+@task('pep8', 'pyflakes')
+def check():
+    pass
+
+
 @task
 def clean():
     run_cmd("find . -name '__pycache__' -exec rm -rf {} +")
