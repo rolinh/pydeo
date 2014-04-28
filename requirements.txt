@@ -1,4 +1,4 @@
-bottle>=0.12.5
+bottle>=0.12.6
 bottle-sqlalchemy>=0.4.1
 Mako>=0.9.1
 requests>=2.2.1
