@@ -1,6 +1,7 @@
 # PYDEO
 
 [![Build Status](https://travis-ci.org/Rolinh/pydeo.png?branch=master)](https://travis-ci.org/Rolinh/pydeo)
+[![Dependencies Status](https://gemnasium.com/Rolinh/pydeo.png)](https://gemnasium.com/Rolinh/pydeo)
 
 **pydeo** is a web based media center. When completed, it will allow you to
 watch your movies or series episodes in streaming through an HTML5 video player
