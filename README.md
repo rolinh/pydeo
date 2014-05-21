@@ -39,8 +39,8 @@ achieve this. Here is the one I use and recommend:
   `pip install -r requirements.txt`
 * initialize the submodules: `invoke init_submodules`
 * if you set up **pydeo** as described in basic configuration section, install
-  `tornado`:
-  `pip install tornado`
+  `cherrypy`:
+  `pip install cherrypy`
   otherwise, install the appropriate server backend corresponding to the one you
   set up in the `settings.py` file
 
