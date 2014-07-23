@@ -6,4 +6,4 @@ imdbpie>=1.4.4
 invoke==0.7.0
 Mako>=1.0.0
 requests>=2.3.0
-SQLAlchemy>=0.9.6
+SQLAlchemy>=0.9.7
